@@ -13,10 +13,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         elevation: 10,
         position: 'absolute',
-        top: 0,
-        shadowColor: 'black',
-        shadowRadius: 50,
-        shadowOpacity: 1
+        top: 0
     },
 
     header_top: {

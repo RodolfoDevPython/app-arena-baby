@@ -119,6 +119,10 @@ const styles = StyleSheet.create({
 
     section_tenha_acesso: {
         maxWidth: Dimensions.get('window').width
+    },
+
+    section: {
+        marginBottom: 64
     }
 
 });

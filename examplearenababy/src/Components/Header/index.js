@@ -24,7 +24,7 @@ export default function Header() {
     return (
         
         <View style={style.container}>
-            <InsetShadow >
+            <InsetShadow shadowOffset={ 1 } top={true} bottom={false}  shadowRadius={ 1 } shadowOpacity={ 1 } elevation={ 20 } containerStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.08)' }} >
                 
                 <View style={ style.header_top } >
                     <View style={ style.icon } >

@@ -6,6 +6,7 @@ import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import Header from "../../Components/Header";
 import Shelf from "../../Components/Shelf";
 import ListCategory from "../../Components/ListCategoryHome";
+import NossasLojas from "../../Components/Shelf/NossasLojas";
 
 
 import style from "./style";
@@ -20,6 +21,11 @@ const _icon_prime = require("../../assets/png/icon-prime-home.png");
 const _icon_estrelas = require("../../assets/png/icon-estrelas-home.png");
 const _color_green_gradient = require("../../assets/png/cor-green-gradient.png");
 const _color_rosa_gradient = require("../../assets/png/color-rosa-gradient.png");
+
+//
+const _marca_tommy = require("../../assets/png/marca-tommy.png");
+const _marca_oshkosh = require("../../assets/png/marca-oshkosh.png");
+const _marca_tiger = require("../../assets/png/marca-tiger.png");
 
 
 import Slick from 'react-native-slick';
@@ -93,134 +99,157 @@ export default function Home({ navigation }) {
                 </Slick>
             
 
-                        <View style={ style.compre_no_app }>
-                            <Image source={ _imagem_compre_no_app } />
+                    <View style={ style.compre_no_app }>
+                        <Image source={ _imagem_compre_no_app } />
 
-                            <View style={{ flexDirection: 'column', marginLeft: 20 }}>
-                                <Text style={ style.compre_no_app__title } >Compre pelo App</Text>
-                                <Text style={ style.compre_no_app__sub_title } >E retire na loja</Text>
-                            </View>
-
+                        <View style={{ flexDirection: 'column', marginLeft: 20 }}>
+                            <Text style={ style.compre_no_app__title } >Compre pelo App</Text>
+                            <Text style={ style.compre_no_app__sub_title } >E retire na loja</Text>
                         </View>
 
-                        <View style={ style.nav_category }>
-                            
-                        </View>
+                    </View>
+
+                    <View style={ style.nav_category, style.section }>
+                        
+                    </View>
+
+                    <View style={ style.section } >
+
+                        <Text style={ style.section_title } >Acacou de chegar</Text>
+                        <TouchableOpacity><Text>ver mais</Text></TouchableOpacity>
+                        
+                    </View>
+
+                    <View style={ style.section } >
+
+                        <Image source={ _banner_meninos } />
+                        <Image source={ _banner_meninas } />
+                        <Image source={ _banner_brinquedos } />
+
+                    </View>
+
+                    <View style={ style.section } >
+
+                        <Text style={ style.section_title__bold } >Mais Vendidos</Text>
+                        <Text style={ style.section_sub_title } >Perto de você</Text>                        
+                        
+                    </View>
+
+                    <View style={ style.section }>
+
+                        <Text style={ { ...style.section_title, marginBottom: 24 } } >Navegue por Marcas</Text>
 
                         <View>
 
-                            <Text style={ style.section_title } >Acacou de chegar</Text>
-                            <TouchableOpacity><Text>ver mais</Text></TouchableOpacity>
-                            
-                        </View>
+                            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                                <View style={{ flexDirection: 'row' }}>
 
-                        <View>
-                            <Image source={ _banner_meninos } />
-                            <Image source={ _banner_meninas } />
-                            <Image source={ _banner_brinquedos } />
-                        </View>
+                                    <Image style={{ marginRight: 20 }} source={ _marca_tommy } />
 
-                        <View>
+                                    <Image style={{ marginRight: 20 }} source={ _marca_oshkosh } />
 
-                            <Text style={ style.section_title__bold } >Mais Vendidos</Text>
-                            <Text style={ style.section_sub_title } >Perto de você</Text>                        
-                            
-                        </View>
+                                    <Image style={{ marginRight: 20 }} source={ _marca_tiger } />
 
-                        <View>
+                                    <Image style={{ marginRight: 20 }} source={ _marca_tommy } />
 
-                            <Text style={ style.section_title } >Navegue por Marcas</Text>
+                                </View>
+                            </ScrollView>
 
                         </View>
 
-                        <View>
+                    </View>
 
-                            <Text style={ style.section_title } >Lojas Próximas</Text>
-                            <Text style={ style.section_sub_title } >Do seu Endereço</Text>
-                            
-                        </View>
+                    <View style={ style.section } >
 
-                        <View style={ style.section_tenha_acesso } >
+                        <Text style={ style.section_title } >Lojas Próximas</Text>
+                        <Text style={ style.section_sub_title } >Do seu Endereço</Text>
 
-                            <View style={{ paddingTop: 10, paddingLeft: 5, paddingRight: 5, paddingBottom: 10 , borderRadius: 8}} >
+                        <NossasLojas />
+                        
+                    </View>
 
-                                <View style={{ flexDirection: 'row' , alignItems: 'center', justifyContent: 'space-between' }} >
+                    <View style={ style.section_tenha_acesso } >
 
-                                    <View style={{ alignItems: 'center', justifyContent: 'center', backgroundColor: '#000', paddingTop: 30, paddingLeft: 35, paddingRight: 35, paddingBottom: 30, borderRadius: 8 }}>
+                        <View style={{ paddingTop: 10, paddingLeft: 5, paddingRight: 5, paddingBottom: 10 , borderRadius: 8}} >
 
-                                        <Image style={{ marginBottom: 10 }} source={ _icon_prime } />
-                                        <Text style={{ color: '#D0B76A', fontSize: 20, fontWeight: '300', textTransform: 'uppercase', lineHeight: 20 }} >Assine</Text>
-                                        <Text style={{ color: '#D0B76A', fontSize: 23, fontWeight: '700', textTransform: 'uppercase', lineHeight: 23 }} >Prime</Text>
+                            <View style={{ flexDirection: 'row' , alignItems: 'center', justifyContent: 'space-between' }} >
 
-                                    </View>
+                                <View style={{ alignItems: 'center', justifyContent: 'center', backgroundColor: '#000', paddingTop: 30, paddingLeft: 35, paddingRight: 35, paddingBottom: 30, borderRadius: 8 }}>
 
-                                    <View style={{ marginLeft: 20 , justifyContent: 'center' , alignItems: 'center' }} >
+                                    <Image style={{ marginBottom: 10 }} source={ _icon_prime } />
+                                    <Text style={{ color: '#D0B76A', fontSize: 20, fontWeight: '300', textTransform: 'uppercase', lineHeight: 20 }} >Assine</Text>
+                                    <Text style={{ color: '#D0B76A', fontSize: 23, fontWeight: '700', textTransform: 'uppercase', lineHeight: 23 }} >Prime</Text>
 
-                                        <Text style={{ fontSize: 12, color: '#000', fontWeight: '300', textTransform: 'uppercase', textAlign: 'center' }} >
-                                            E TENHA ACESSO A
-                                        </Text>
-                                        <Text style={{ fontSize: 12, fontWeight: '700', color: '#000', textTransform: 'uppercase', textAlign: 'center' }} >
-                                            PRODUTOS EXCLUSIVOS
-                                        </Text>
+                                </View>
 
-                                        <TouchableOpacity style={{ paddingTop: 7, paddingLeft: 23, paddingRight: 23, paddingBottom: 7, borderRadius: 5 , backgroundColor: '#000',  marginTop: 17, maxWidth: 108 }}>
-                                            <Text style={{ fontSize: 9, fontWeight: '300', color: '#fff', textTransform: 'uppercase', textAlign: 'center' }} >Assinar</Text>
-                                        </TouchableOpacity>
+                                <View style={{ marginLeft: 20 , justifyContent: 'center' , alignItems: 'center' }} >
 
-                                    </View>
+                                    <Text style={{ fontSize: 12, color: '#000', fontWeight: '300', textTransform: 'uppercase', textAlign: 'center' }} >
+                                        E TENHA ACESSO A
+                                    </Text>
+                                    <Text style={{ fontSize: 12, fontWeight: '700', color: '#000', textTransform: 'uppercase', textAlign: 'center' }} >
+                                        PRODUTOS EXCLUSIVOS
+                                    </Text>
+
+                                    <TouchableOpacity style={{ paddingTop: 7, paddingLeft: 23, paddingRight: 23, paddingBottom: 7, borderRadius: 5 , backgroundColor: '#000',  marginTop: 17, maxWidth: 108 }}>
+                                        <Text style={{ fontSize: 9, fontWeight: '300', color: '#fff', textTransform: 'uppercase', textAlign: 'center' }} >Assinar</Text>
+                                    </TouchableOpacity>
 
                                 </View>
 
                             </View>
 
-                            <View style={{ paddingTop: 10, paddingLeft: 5, paddingRight: 5, paddingBottom: 10, borderRadius: 10 }} >
+                        </View>
 
-                                <ImageBackground source={ _color_green_gradient } style={{  paddingTop: 20, paddingBottom: 20, paddingLeft: 23, paddingRight: 23, resizeMode: "cover", justifyContent: "center", borderRadius: 8 }} >
+                        <View style={{ paddingTop: 10, paddingLeft: 5, paddingRight: 5, paddingBottom: 10, borderRadius: 10 }} >
 
-                                    <View style={{ flexDirection: 'row' , alignItems: 'stretch', borderRadius: 8, justifyContent: 'space-between' }} >
+                            <ImageBackground source={ _color_green_gradient } style={{  paddingTop: 20, paddingBottom: 20, paddingLeft: 23, paddingRight: 23, resizeMode: "cover", justifyContent: "center", borderRadius: 8 }} >
 
-                                        <View>
-                                                <Image source={ _icon_estrelas } style={{ marginBottom: 28 }} />
-                                                <Text style={{ fontSize: 20, fontWeight: '700', textTransform: 'uppercase', color: '#fff' }} >Fidelidade</Text>
-                                        </View>
+                                <View style={{ flexDirection: 'row' , alignItems: 'stretch', borderRadius: 8, justifyContent: 'space-between' }} >
 
-                                        <View style={{ marginTop: 40 }}>
-                                            <Text style={{ fontSize: 12, color: '#fff', fontWeight: '300',  maxWidth: 150 , textAlign: 'center' }} >
-                                                A CADA <Text style={{ fontWeight: '600' }}>30 ESTRELAS, GANHE CRÉDITOS</Text> NA SUA PRÓXIMA COMPRA.
-                                            </Text>
-
-                                            <TouchableOpacity style={{ paddingTop: 6, paddingLeft: 23, paddingRight: 23, paddingBottom: 6, borderRadius: 5 , backgroundColor: '#fff',  marginTop: 17, maxWidth: 132 }} >
-                                                <Text style={{ fontSize: 12, fontWeight: '700', color: '#80A800', textTransform: 'uppercase', textAlign: 'center' }} >Saiba Mais</Text>
-                                            </TouchableOpacity>
-                                        </View>
-                                        
+                                    <View>
+                                            <Image source={ _icon_estrelas } style={{ marginBottom: 28 }} />
+                                            <Text style={{ fontSize: 20, fontWeight: '700', textTransform: 'uppercase', color: '#fff' }} >Fidelidade</Text>
                                     </View>
 
-                                </ImageBackground>
-                            </View>
+                                    <View style={{ marginTop: 40 }}>
+                                        <Text style={{ fontSize: 12, color: '#fff', fontWeight: '300',  maxWidth: 150 , textAlign: 'center' }} >
+                                            A CADA <Text style={{ fontWeight: '600' }}>30 ESTRELAS, GANHE CRÉDITOS</Text> NA SUA PRÓXIMA COMPRA.
+                                        </Text>
 
-                            <View style={{ paddingTop: 10, paddingLeft: 5, paddingRight: 5, paddingBottom: 10, borderRadius: 10 }} >
-
-                                <View>
+                                        <TouchableOpacity style={{ paddingTop: 6, paddingLeft: 23, paddingRight: 23, paddingBottom: 6, borderRadius: 5 , backgroundColor: '#fff',  marginTop: 17, maxWidth: 132 }} >
+                                            <Text style={{ fontSize: 12, fontWeight: '700', color: '#80A800', textTransform: 'uppercase', textAlign: 'center' }} >Saiba Mais</Text>
+                                        </TouchableOpacity>
+                                    </View>
                                     
-                                    <ImageBackground source={ _color_rosa_gradient } style={{  padding: 20,  resizeMode: "cover", justifyContent: "center", borderRadius: 8, justifyContent: 'center', alignItems: 'center' }} >
-                                        <Text style={{ fontSize: 29, fontWeight: '300', color: '#fff', textTransform: 'uppercase', textAlign: 'center' }} >Venda seu</Text>
-                                        <Text style={{ fontSize: 33, fontWeight: '700', color: '#fff', textTransform: 'uppercase', textAlign: 'center' }} >Produto</Text>
-
-                                        <TouchableOpacity style={{ paddingTop: 6, paddingLeft: 23, paddingRight: 23, paddingBottom: 6, borderRadius: 10 , backgroundColor: '#fff', borderRadius: 8, marginTop: 17, maxWidth: 132 }} >
-                                            <Text style={{ fontSize: 12, fontWeight: '700', color: '#E6007E', textTransform: 'uppercase', textAlign: 'center' }} >saiba mais</Text>
-                                        </TouchableOpacity>
-                                    </ImageBackground>
-
                                 </View>
-                                
-                            </View>
+
+                            </ImageBackground>
                         </View>
 
-                    </ScrollView>
-                    
-                </View>
+                        <View style={{ paddingTop: 10, paddingLeft: 5, paddingRight: 5, paddingBottom: 10, borderRadius: 10 }} >
+
+                            <View>
+                                
+                                <ImageBackground source={ _color_rosa_gradient } style={{  padding: 20,  resizeMode: "cover", justifyContent: "center", borderRadius: 8, justifyContent: 'center', alignItems: 'center' }} >
+                                    <Text style={{ fontSize: 29, fontWeight: '300', color: '#fff', textTransform: 'uppercase', textAlign: 'center' }} >Venda seu</Text>
+                                    <Text style={{ fontSize: 33, fontWeight: '700', color: '#fff', textTransform: 'uppercase', textAlign: 'center' }} >Produto</Text>
+
+                                    <TouchableOpacity style={{ paddingTop: 6, paddingLeft: 23, paddingRight: 23, paddingBottom: 6, borderRadius: 10 , backgroundColor: '#fff', borderRadius: 8, marginTop: 17, maxWidth: 132 }} >
+                                        <Text style={{ fontSize: 12, fontWeight: '700', color: '#E6007E', textTransform: 'uppercase', textAlign: 'center' }} >saiba mais</Text>
+                                    </TouchableOpacity>
+                                </ImageBackground>
+
+                            </View>
+                            
+                        </View>
+
+                    </View>
+
+                </ScrollView>
+                
             </View>
+        </View>
     );
 
 }
