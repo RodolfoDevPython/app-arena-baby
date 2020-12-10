@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         maxHeight: 80,
         backgroundColor: 'transparent',
-        elevation: 10,
+        elevation: 90,
         position: 'absolute',
         top: 0
     },
@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     
     icon: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        elevation: 7
     },
 
 

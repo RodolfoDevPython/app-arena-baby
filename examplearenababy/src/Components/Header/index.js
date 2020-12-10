@@ -4,6 +4,8 @@ import { View, Text, Image, ImageBackground, Dimensions } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import InsetShadow  from "react-native-inset-shadow";
 
+import { useNavigation } from '@react-navigation/native';
+
 
 const _logo = require('../../assets/png/icon-logo-small.png');
 const _icon_search = require('../../assets/png/icon-search.png');
@@ -17,6 +19,14 @@ import style from "./style";
 
 export default function Header() {
 
+    
+    const navigation = useNavigation();
+    
+    function onOpenMenu() {
+        console.log("aqiiiiiiiiiiiiiiiiiiiiiiii")
+        navigation.openDrawer();
+    }
+
     function _onMomentumScrollEnd(e, state, context) {
         console.log(state, context.state)
     }
@@ -28,7 +38,7 @@ export default function Header() {
                 
                 <View style={ style.header_top } >
                     <View style={ style.icon } >
-                        <TouchableOpacity style={{ marginRight: 10 }} >
+                        <TouchableOpacity onPress={ () => onOpenMenu() } style={{ marginRight: 10 }} >
                             <Image source={_icon_menu} />
                         </TouchableOpacity>
 

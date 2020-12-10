@@ -4,7 +4,6 @@ const color_green = '#AACE37';
 
 const styles = StyleSheet.create({
 
-
     slick: {
         marginTop: -20,
         zIndex: 4,
@@ -55,6 +54,14 @@ const styles = StyleSheet.create({
         textShadowRadius: 30
     },
 
+    container_meninos_meninas: {
+        padding: 1,
+        margin: 1,          
+    },
+
+    img_meninos_meninas: {
+        maxWidth: Dimensions.get('window').width ,
+    },  
 
     container: {
         flex: 1,
@@ -90,10 +97,6 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase'
     },
 
-    nav_category: {
-
-    },
-
     section_title: {
         fontSize: 23,
         fontWeight: '300',
@@ -109,6 +112,14 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase'
     },
 
+    show_more: {
+        fontSize: 12,
+        fontWeight: '300',
+        textDecorationLine: 'underline',
+        textTransform: 'uppercase',
+        textAlign: 'center'
+    },
+
     section_sub_title: {
         fontSize: 22,
         fontWeight: '300',
@@ -118,11 +129,23 @@ const styles = StyleSheet.create({
     }, 
 
     section_tenha_acesso: {
-        maxWidth: Dimensions.get('window').width
+        maxWidth: Dimensions.get('window').width,
+        paddingLeft: 20,
+        paddingRight: 20,
+        marginBottom: 55
     },
 
+    section_tenha_acesso_item: {
+        marginBottom: 10,
+        padding: 10, 
+        borderColor: 'rgba(0,0,0, 0.06)',
+        borderWidth: 2,
+        borderRadius: 9,        
+    },  
+
     section: {
-        marginBottom: 64
+        marginBottom: 64,
+        
     }
 
 });

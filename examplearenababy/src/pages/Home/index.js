@@ -4,9 +4,9 @@ import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 
 import Header from "../../Components/Header";
-import Shelf from "../../Components/Shelf";
 import ListCategory from "../../Components/ListCategoryHome";
 import NossasLojas from "../../Components/Shelf/NossasLojas";
+import Shelf from "../../Components/Shelf/ShelfCollection";
 
 
 import style from "./style";
@@ -37,10 +37,13 @@ export default function Home({ navigation }) {
     console.log(navigation)
 
     return (
-            <View style={{ position: 'relative', flex: 1, justifyContent: 'center', alignItems: 'center' }}> 
-                <Header />
-                <View style={ style.container } >
-                    <ScrollView>
+        <View style={{ position: 'relative', flex: 1, justifyContent: 'center', alignItems: 'center', elevation: 6 }}> 
+
+            <Header />
+
+            <View style={ style.container } >
+
+                <ScrollView >
 
                     <Slick 
                     style={{ height: 312 }}
@@ -100,6 +103,7 @@ export default function Home({ navigation }) {
             
 
                     <View style={ style.compre_no_app }>
+
                         <Image source={ _imagem_compre_no_app } />
 
                         <View style={{ flexDirection: 'column', marginLeft: 20 }}>
@@ -116,22 +120,28 @@ export default function Home({ navigation }) {
                     <View style={ style.section } >
 
                         <Text style={ style.section_title } >Acacou de chegar</Text>
-                        <TouchableOpacity><Text>ver mais</Text></TouchableOpacity>
+                        <TouchableOpacity><Text style={ style.show_more } >ver mais</Text></TouchableOpacity>
                         
+                        <Shelf />
+
                     </View>
 
-                    <View style={ style.section } >
+                    <View style={{ ...style.section, ...style.container_meninos_meninas }} >
 
-                        <Image source={ _banner_meninos } />
-                        <Image source={ _banner_meninas } />
-                        <Image source={ _banner_brinquedos } />
+                        <Image resizeMode='contain' style={ style.img_meninos_meninas } source={ _banner_meninos } />
+
+                        <Image resizeMode='contain' style={ style.img_meninos_meninas } source={ _banner_meninas } />
+
+                        <Image resizeMode='contain' style={ style.img_meninos_meninas } source={ _banner_brinquedos } />
 
                     </View>
 
                     <View style={ style.section } >
 
                         <Text style={ style.section_title__bold } >Mais Vendidos</Text>
-                        <Text style={ style.section_sub_title } >Perto de você</Text>                        
+                        <Text style={ style.section_sub_title } >Perto de você</Text>        
+
+                        <Shelf />                
                         
                     </View>
 
@@ -144,13 +154,13 @@ export default function Home({ navigation }) {
                             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                                 <View style={{ flexDirection: 'row' }}>
 
-                                    <Image style={{ marginRight: 20 }} source={ _marca_tommy } />
+                                    <Image style={{ marginRight: 20 }} resizeMode={'cover'} source={ _marca_tommy } />
 
-                                    <Image style={{ marginRight: 20 }} source={ _marca_oshkosh } />
+                                    <Image style={{ marginRight: 20 }} resizeMode={'cover'} source={ _marca_oshkosh } />
 
-                                    <Image style={{ marginRight: 20 }} source={ _marca_tiger } />
+                                    <Image style={{ marginRight: 20 }} resizeMode={'cover'} source={ _marca_tiger } />
 
-                                    <Image style={{ marginRight: 20 }} source={ _marca_tommy } />
+                                    <Image style={{ marginRight: 20 }} resizeMode={'cover'} source={ _marca_tommy } />
 
                                 </View>
                             </ScrollView>
@@ -162,7 +172,7 @@ export default function Home({ navigation }) {
                     <View style={ style.section } >
 
                         <Text style={ style.section_title } >Lojas Próximas</Text>
-                        <Text style={ style.section_sub_title } >Do seu Endereço</Text>
+                        <Text style={ { ...style.section_sub_title, marginBottom: 30 } } >Do seu Endereço</Text>
 
                         <NossasLojas />
                         
@@ -170,7 +180,7 @@ export default function Home({ navigation }) {
 
                     <View style={ style.section_tenha_acesso } >
 
-                        <View style={{ paddingTop: 10, paddingLeft: 5, paddingRight: 5, paddingBottom: 10 , borderRadius: 8}} >
+                        <View style={ style.section_tenha_acesso_item } >
 
                             <View style={{ flexDirection: 'row' , alignItems: 'center', justifyContent: 'space-between' }} >
 
@@ -201,9 +211,9 @@ export default function Home({ navigation }) {
 
                         </View>
 
-                        <View style={{ paddingTop: 10, paddingLeft: 5, paddingRight: 5, paddingBottom: 10, borderRadius: 10 }} >
+                        <View style={ style.section_tenha_acesso_item } >
 
-                            <ImageBackground source={ _color_green_gradient } style={{  paddingTop: 20, paddingBottom: 20, paddingLeft: 23, paddingRight: 23, resizeMode: "cover", justifyContent: "center", borderRadius: 8 }} >
+                            <ImageBackground source={ _color_green_gradient } style={{  paddingTop: 20, paddingBottom: 20, paddingLeft: 23, paddingRight: 23, resizeMode: "cover", justifyContent: "center" }} >
 
                                 <View style={{ flexDirection: 'row' , alignItems: 'stretch', borderRadius: 8, justifyContent: 'space-between' }} >
 
@@ -212,12 +222,12 @@ export default function Home({ navigation }) {
                                             <Text style={{ fontSize: 20, fontWeight: '700', textTransform: 'uppercase', color: '#fff' }} >Fidelidade</Text>
                                     </View>
 
-                                    <View style={{ marginTop: 40 }}>
+                                    <View style={{ marginTop: 40 , alignItems:'center', justifyContent: 'center' }}>
                                         <Text style={{ fontSize: 12, color: '#fff', fontWeight: '300',  maxWidth: 150 , textAlign: 'center' }} >
                                             A CADA <Text style={{ fontWeight: '600' }}>30 ESTRELAS, GANHE CRÉDITOS</Text> NA SUA PRÓXIMA COMPRA.
                                         </Text>
 
-                                        <TouchableOpacity style={{ paddingTop: 6, paddingLeft: 23, paddingRight: 23, paddingBottom: 6, borderRadius: 5 , backgroundColor: '#fff',  marginTop: 17, maxWidth: 132 }} >
+                                        <TouchableOpacity style={{ paddingTop: 6, paddingLeft: 23, paddingRight: 23, paddingBottom: 6, borderRadius: 5 , backgroundColor: '#fff',  marginTop: 17, maxWidth: 120 }} >
                                             <Text style={{ fontSize: 12, fontWeight: '700', color: '#80A800', textTransform: 'uppercase', textAlign: 'center' }} >Saiba Mais</Text>
                                         </TouchableOpacity>
                                     </View>
@@ -227,7 +237,7 @@ export default function Home({ navigation }) {
                             </ImageBackground>
                         </View>
 
-                        <View style={{ paddingTop: 10, paddingLeft: 5, paddingRight: 5, paddingBottom: 10, borderRadius: 10 }} >
+                        <View style={ style.section_tenha_acesso_item } >
 
                             <View>
                                 

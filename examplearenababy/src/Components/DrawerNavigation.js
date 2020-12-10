@@ -17,7 +17,6 @@ export default function DrawerNavigation() {
 
         <Drawer.Navigator 
             initialRouteName="Home" 
-            drawerContent={(props) => <DrawerCustom {...props} />}
         >
             <Drawer.Screen 
                 name="Home"
