@@ -25,8 +25,8 @@ export default function Router() {
 
                 <Stack.Screen 
                     name="Home" 
-                    component={ Tap } 
                     options={{ headerShown: false }}
+                    component={ Tap }   
                 />
 
             </Stack.Navigator>

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, ImageBackground } from "react-native";
+import { View, Text, Image, ImageBackground, StatusBar } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 import * as Progress from 'react-native-progress';
@@ -45,6 +45,7 @@ export default function InitStep({ navigation }) {
 
     return(
         <>
+            
             <ImageBackground source={bg_imagem} style={style.img_bg}>
 
                 <View style={style.container} >

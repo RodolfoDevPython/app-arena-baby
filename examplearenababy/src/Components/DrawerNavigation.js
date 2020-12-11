@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Home from '../pages/Home';
 import Product from "../pages/Product";
+import Category from "../pages/Category";
 
 import DrawerCustom from './DrawerCustomer';
 
@@ -16,21 +17,64 @@ export default function DrawerNavigation() {
     return(
 
         <Drawer.Navigator 
-            initialRouteName="Home" 
+            initialRouteName='Home'             
+            drawerContent={(props) => <DrawerCustom {...props} />}
         >
+
             <Drawer.Screen 
                 name="Home"
                 component={Home}
             />
+
             <Drawer.Screen 
-                name="Product" 
-                component={Product}
+                name="Roupas"
+                component={Category}
             />
-            
             <Drawer.Screen 
-                name="Category" 
-                component={Tab}
+                name="Calçados" 
+                component={Category}
             />
+
+            <Drawer.Screen 
+                name="Passeio" 
+                component={Category}
+            />
+
+            <Drawer.Screen 
+                name="Banho" 
+                component={Category}
+            />
+
+            <Drawer.Screen 
+                name="Higiene" 
+                component={Category}
+            />
+
+            <Drawer.Screen 
+                name="Alimentação" 
+                component={Category}
+            />
+
+            <Drawer.Screen 
+                name="Quarto" 
+                component={Category}
+            />
+
+            <Drawer.Screen 
+                name="Brinquedos" 
+                component={Category}
+            />
+
+            <Drawer.Screen 
+                name="Acessorios" 
+                component={Category}
+            />
+
+            <Drawer.Screen 
+                name="Mamãe" 
+                component={Category}
+            />
+
         </Drawer.Navigator>
 
     )

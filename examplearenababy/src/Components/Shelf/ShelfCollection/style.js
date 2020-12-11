@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         borderRadius: 8,
         borderColor: 'rgba(0,0,0, 0.08)',
-        borderWidth: 1
+        borderWidth: 1,
+        justifyContent: 'space-between'
     },
 
     container_img: {
@@ -68,7 +69,9 @@ const styles = StyleSheet.create({
         fontWeight: '300',
         textAlign: 'left',
         color: color_gray,
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
+        maxWidth: 186,
+        width: 186
     },
 
     price: {
@@ -78,9 +81,9 @@ const styles = StyleSheet.create({
     },  
 
     box_buy: {
-        borderRadius: 7,
+        borderRadius: 5,
         backgroundColor: color_green,
-        padding: 10,
+        padding: 8,
         marginTop: 20
     },
 

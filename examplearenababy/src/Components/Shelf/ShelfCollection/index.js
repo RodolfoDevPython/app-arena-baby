@@ -88,9 +88,9 @@ export default function Shelf({ colecao = 139 }) {
                                             
                                             <Text style={ style.brand } > { item['brand'] } </Text>
 
-                                            <Text style={ style.name } > { item['productName'] } </Text>
+                                            <Text style={ style.name } numberOfLines = { 2 } > { item['productName'] } </Text>
 
-                                            <Text style={ style.price } > { currency(Price) } </Text>
+                                            <Text style={ style.price } > <Text style={{ ...style.price, fontSize: 15 }} >R$</Text>{ currency(Price) } </Text>
 
                                         </View>
 

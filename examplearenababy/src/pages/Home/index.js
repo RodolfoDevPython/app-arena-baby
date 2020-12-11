@@ -32,9 +32,7 @@ import Slick from 'react-native-slick';
 
 const _image_header = require('../../assets/png/banner-main-home.png');
 
-export default function Home({ navigation }) {
-
-    console.log(navigation)
+export default function Home() {    
 
     return (
         <View style={{ position: 'relative', flex: 1, justifyContent: 'center', alignItems: 'center', elevation: 6 }}> 

@@ -20,6 +20,7 @@ const Tab = createBottomTabNavigator();
 export default function TabNavigator() {
 
     return(
+
         <Tab.Navigator 
             initialRouteName="Home"
             tabBarOptions={{
@@ -37,7 +38,7 @@ export default function TabNavigator() {
         >
             <Tab.Screen 
                 name="Home"
-                component={DrawerNavigation }
+                component={ DrawerNavigation }
                 options={{
                     tabBarIcon: ({ color, size }) => (
                       <Image name="home" color={color} source={_icon_home} size={size} />
@@ -45,6 +46,7 @@ export default function TabNavigator() {
                 }}
 
             />
+
             <Tab.Screen 
                 name="Lojas"
                 component={Home}
@@ -55,6 +57,7 @@ export default function TabNavigator() {
                 }}
 
             />
+
             <Tab.Screen 
                 name="Créditos"
                 component={Home}
