@@ -7,6 +7,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import Header from "../MenuNavigation/Header";
 
+import QueroComprar from "../MenuNavigation/QueroComprar";
+import QueroVender from "../MenuNavigation/QueroVender";
+
 const _icon_minicart = require('../../assets/png/icon-minicart.png');
 
 import style from "./style";
@@ -30,10 +33,10 @@ export default function Drawer(props) {
     }
 
     return (
-
+        <>
+        <Header />
         <ScrollView>
-            
-            <Header />
+        
 
             <View>
 
@@ -61,13 +64,19 @@ export default function Drawer(props) {
                 </View>
 
                 { 
-                    aba == 'qr-vender' ? (<DrawerItem  label="Logout" />) : null
+                    aba == 'qr-vender' ? 
+                        (
+                            <QueroVender />
+                        )
+                    : 
+                        (<QueroComprar />)
                 }
                 
 
             </View>
 
         </ScrollView>
+        </>
     );
 
 }

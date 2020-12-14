@@ -18,7 +18,7 @@ const style = StyleSheet.create({
 
     header_item__active: {
         backgroundColor: color_gray,
-        padding: 21
+        padding: 18
     },
 
     header_text: {

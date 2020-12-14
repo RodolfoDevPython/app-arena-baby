@@ -8,6 +8,7 @@ import Category from '../pages/Category';
 import Home from "../pages/Home";
 
 import DrawerNavigation from './DrawerNavigation';
+import { useRoute } from '@react-navigation/native';
 
 const _icon_home = require('../assets/png/icon-home-tab.png');
 const _icon_nossas_lojas = require('../assets/png/icon-nossas-lojas-tab.png');
@@ -19,10 +20,14 @@ const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
 
+    const router = useRoute();
+
+    console.log(router.name)
+
     return(
 
         <Tab.Navigator 
-            initialRouteName="Home"
+            initialRouteName={ router.name }         
             tabBarOptions={{
                 activeTintColor: '#AACE37',
                 inactiveTintColor: '#434343',
@@ -43,6 +48,15 @@ export default function TabNavigator() {
                     tabBarIcon: ({ color, size }) => (
                       <Image name="home" color={color} source={_icon_home} size={size} />
                     ),
+                }}
+
+            />
+
+            <Tab.Screen 
+                name="Category"
+                component={ Category }
+                options={{
+                    tabBarButton: () => null
                 }}
 
             />

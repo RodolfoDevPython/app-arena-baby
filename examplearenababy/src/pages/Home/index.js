@@ -115,7 +115,7 @@ export default function Home() {
                         
                     </View>
 
-                    <View style={ style.section } >
+                    <View style={{ ...style.section, maxWidth: Dimensions.get('window').width, overflow: 'scroll' }} >
 
                         <Text style={ style.section_title } >Acacou de chegar</Text>
                         <TouchableOpacity><Text style={ style.show_more } >ver mais</Text></TouchableOpacity>

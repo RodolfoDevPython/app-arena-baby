@@ -9,15 +9,15 @@ const styles = StyleSheet.create({
 
     container: {
         justifyContent: 'center',
+        flexWrap: 'wrap',
         alignItems: 'center',
         paddingRight: 10,
         paddingLeft: 10,
         paddingTop: 32,
-        overflow: 'scroll'
+        width: Dimensions.get('window').width
     },
 
     item: {
-        flex: 1,
         margin: 1,
         marginRight: 10,
         padding: 10,
@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         color: color_gray,
         textTransform: 'uppercase',
-        maxWidth: 186,
-        width: 186
+        maxWidth: 135,
+        width: 135
     },
 
     price: {

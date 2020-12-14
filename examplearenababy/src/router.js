@@ -29,6 +29,12 @@ export default function Router() {
                     component={ Tap }   
                 />
 
+                <Stack.Screen 
+                    name="Category" 
+                    options={{ headerShown: false }}
+                    component={ Tap }   
+                />
+
             </Stack.Navigator>
         </NavigationContainer>
     );

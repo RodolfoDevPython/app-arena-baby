@@ -26,7 +26,7 @@ export default function DrawerNavigation() {
                 component={Home}
             />
 
-            <Drawer.Screen 
+            <Drawer.Screen  
                 name="Roupas"
                 component={Category}
             />
