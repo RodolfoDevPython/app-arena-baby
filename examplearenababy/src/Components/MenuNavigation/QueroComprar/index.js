@@ -37,9 +37,6 @@ export default function Items() {
     })
 
     function onClickAbas(element) {
-        console.log('aquiiiiiiiiii')
-        console.log(element)
-        console.log('aquiiiiiiiiii----')
 
         if (!toggleMenu.isActive) {
             setToggleMenu({ isActive: true, element })
@@ -61,8 +58,13 @@ export default function Items() {
 
     }
 
-    function onLink() {
-        navigation.push('Category');
+    function onLink(departament) {
+
+        navigation.navigate('Category', {
+                Busca: departament 
+            }
+        )
+        
     }
 
     return(
@@ -76,12 +78,16 @@ export default function Items() {
                 renderItem={ ({ item }) => { 
 
                     let departament = item.Departament;
-                    console.log(departament)
+
+                    let { Departament, categoriesIds } = item;
+
+                    console.log(categoriesIds)
+                    
                     
                     return (
                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomColor: '#ddd', borderBottomWidth: 1, padding: 17, paddingLeft: 30, backgroundColor: '#F5F5F5' }} >
                             <TouchableOpacity 
-                                onPress={ onLink } 
+                                onPress={ () => onLink({ departament , }) } 
 
                             >
                                 <View style={{ alignItems: 'center', flexDirection: 'row' }}>

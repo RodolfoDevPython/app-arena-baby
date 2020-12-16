@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         borderColor: 'rgba(0,0,0, 0.08)',
         borderWidth: 1,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
 
     container_img: {

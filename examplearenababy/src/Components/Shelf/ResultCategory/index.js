@@ -15,15 +15,19 @@ import icon_desconto from "../../../assets/png/icon_desconto.png";
 import Loading from "../../skeleton/ShelfCollection";
 
 
-export default function ResultCategory({ colecao = 139 }) {
+export default function ResultCategory({ busca = 'fq=H:139' }) {
 
+    console.log(busca)
+    busca = 'fq=H:139'
     const [ items, SetItems] = useState([]);
+
+    //?fq=C:/3/&_from=20&_to=30
 
     useEffect( () => {
 
         async function fetchData() {
 
-            const response = await api.get(`/catalog_system/pub/products/search?fq=H:${colecao}`);
+            const response = await api.get(`/catalog_system/pub/products/search?${busca}`);
 
             SetItems(response.data)
 
@@ -51,7 +55,7 @@ export default function ResultCategory({ colecao = 139 }) {
                     keyExtractor={ element => element.items[0].itemId }
                     renderItem={ ({ item }) => { 
 
-                        console.log(item)
+                        console.log(item.categoriesIds)
                             
                             let { Price, ListPrice } = item.items[0].sellers[0].commertialOffer
 
