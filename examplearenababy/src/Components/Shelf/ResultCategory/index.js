@@ -13,13 +13,17 @@ import api from "../../../server";
 import icon_desconto from "../../../assets/png/icon_desconto.png";
 
 import Loading from "../../skeleton/ShelfCollection";
+import { useSelector } from "react-redux";
 
 
 export default function ResultCategory({ busca = 'fq=H:139' }) {
 
+    console.log('BUSCAAA')
     console.log(busca)
     busca = 'fq=H:139'
     const [ items, SetItems] = useState([]);
+
+    const { FieldId, FieldValueId } = useSelector( state => state.resultCategory );
 
     //?fq=C:/3/&_from=20&_to=30
 
@@ -27,15 +31,23 @@ export default function ResultCategory({ busca = 'fq=H:139' }) {
 
         async function fetchData() {
 
-            const response = await api.get(`/catalog_system/pub/products/search?${busca}`);
+            console.log('component Result')
+    
+    
+            console.log(FieldId)
+            
+            const filter = (FieldId != 0 && FieldValueId !=0 ) ? `?fq=specificationFilter_${FieldId}:${FieldValueId}` : ""
+            console.log(filter)
+            const response = await api.get(`/catalog_system/pub/products/search?${busca}${filter}`);
 
             SetItems(response.data)
 
+            console.log('=---------------------------=')
         }
 
         fetchData();
 
-    }, []);
+    }, [ FieldValueId ]);
 
     function handleAddMiniCart(item) {
         console.log(item);
@@ -114,6 +126,7 @@ export default function ResultCategory({ busca = 'fq=H:139' }) {
                                         >
                                             <Text style={ style.text_buy } >COMPRAR</Text>
                                         </TouchableOpacity>
+
                                     </View>
 
                                 </>

@@ -87,7 +87,7 @@ export default function Items() {
                     return (
                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomColor: '#ddd', borderBottomWidth: 1, padding: 17, paddingLeft: 30, backgroundColor: '#F5F5F5' }} >
                             <TouchableOpacity 
-                                onPress={ () => onLink({ departament , }) } 
+                                onPress={ () => onLink({ departament }) } 
 
                             >
                                 <View style={{ alignItems: 'center', flexDirection: 'row' }}>
