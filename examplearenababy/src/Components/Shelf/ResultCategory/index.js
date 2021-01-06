@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { View, FlatList, Text, Image } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { View, FlatList, Text, Image, ActivityIndicator } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 import { SvgXml } from "react-native-svg";
 
@@ -20,37 +20,83 @@ export default function ResultCategory({ busca = 'fq=H:139' }) {
 
     console.log('BUSCAAA')
     console.log(busca)
-    busca = 'fq=H:139'
+    busca = 'fq=C:3'
     const [ items, SetItems] = useState([]);
 
-    const { FieldId, FieldValueId } = useSelector( state => state.resultCategory );
+    const [ rangeResult, setRangeResult ] = useState({ from: 0, to: 9 });
 
-    //?fq=C:/3/&_from=20&_to=30
+    const [ refreshing, setRefreshing ] = useState(false);
+
+    const [ loading, setLoading ] = useState(false)
+
+    const filters = useSelector( state => state.resultCategory );
+
+    async function fetchData(shoudRefresh = false) {
+
+        console.log('component Result')
+
+        let urlFilter = '';
+
+        if (shoudRefresh) {
+            setRangeResult({ from: 0, to: 9 });
+        }
+
+        setLoading(true)
+
+        if (filters.length > 0) {
+            filters.map( (e,i) => {
+                
+                if (i == 0) {
+                    urlFilter += `?fq=specificationFilter_${e.FieldId}:${e.FieldValueId}`;
+                } else {
+                    urlFilter += `&fq=specificationFilter_${e.FieldId}:${e.FieldValueId}`;
+                }
+                
+            })
+        }
+
+        console.log("=== filter ====")
+        console.log(filters)
+        console.log(urlFilter)
+        console.log("=--------------=")
+
+        const response = await api.get(`/catalog_system/pub/products/search?${busca}${urlFilter}&_from=${rangeResult.from}&_to=${rangeResult.to}`);
+
+        SetItems(shoudRefresh || urlFilter != "" ? response.data : [ ...items, ...response.data ])
+
+        setLoading(false);
+
+
+    }
 
     useEffect( () => {
 
-        async function fetchData() {
+        fetchData();        
 
-            console.log('component Result')
-    
-    
-            console.log(FieldId)
-            
-            const filter = (FieldId != 0 && FieldValueId !=0 ) ? `?fq=specificationFilter_${FieldId}:${FieldValueId}` : ""
-            console.log(filter)
-            const response = await api.get(`/catalog_system/pub/products/search?${busca}${filter}`);
-
-            SetItems(response.data)
-
-            console.log('=---------------------------=')
-        }
-
-        fetchData();
-
-    }, [ FieldValueId ]);
+    }, [ filters ]);
 
     function handleAddMiniCart(item) {
         console.log(item);
+    }
+
+    async function moreItemsResult() {
+
+        if (filters.length > 0) {
+            setRangeResult({ from: 0, to: 40 }); // vai desabilitar a paginação quando ele fazer o filtro
+        } else {
+            setRangeResult({ from: rangeResult.from + 10, to: rangeResult.to + 10  });
+        }
+        
+        await fetchData();
+        
+    }
+
+    async function refreshList() {
+        setRefreshing(true);
+        ///1° Param -> vamos carregar os primeiros conteúdos por isso passei o 1 como parâmetro 
+        ///2° Param -> passamos true para no parametro para ativar a flag de não duplicar os item no flatlist
+        await fetchData(true);
+        setRefreshing(false);
     }
 
     return (
@@ -61,13 +107,19 @@ export default function ResultCategory({ busca = 'fq=H:139' }) {
                 !items.length ? < Loading /> : (
 
                 <FlatList 
+                    style={ style.listResult }
                     data={ items }
                     horizontal={false}
                     numColumns={2}
-                    keyExtractor={ element => element.items[0].itemId }
+                    keyExtractor={ (element, index) => index }
+                    onEndReached={() => moreItemsResult()}
+                    onEndReachedThreshold={0.1} //-> para colocar uma porcentagem no scroll para chamar o onEndReached(Onde vai ser disparado uma function)
+                    onRefresh={refreshList} //Propriedade responsavel por rodar uma function quando o usuario tentar usar o refresh nativo
+                    refreshing={refreshing} //Propriedade responsavel por verificar se a flatlist está em refresh ou não retorna true or false 
+                    ListFooterComponent={loading && <ActivityIndicator /> }
                     renderItem={ ({ item }) => { 
 
-                        console.log(item.categoriesIds)
+                        //console.log(item.categoriesIds)
                             
                             let { Price, ListPrice } = item.items[0].sellers[0].commertialOffer
 
@@ -97,7 +149,7 @@ export default function ResultCategory({ busca = 'fq=H:139' }) {
 
                                             <Image 
                                                 resizeMode="contain"
-                                                style={{  height: 300 }}
+                                                style={ style.img_product }
                                                 source={{ uri: imagem }} 
                                                 alt='Imagem de Música' 
                                             />

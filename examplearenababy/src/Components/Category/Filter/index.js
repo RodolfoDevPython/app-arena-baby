@@ -21,10 +21,9 @@ export default function BoxMenuFilter() {
     const [ itemMenu , setItemMenu ] = useState();
     //const [ posFilter, setPosFilter ] = useState(-400);
 
-    const [ checkedItem, SetCheckedItem ] = useState(false);
+    const [ checkedItem, SetCheckedItem ] = useState([]);
 
     const styleLeftFilter = useRef(new Animated.Value(posFilter)).current;
-
 
     useEffect( () => {
 
@@ -60,13 +59,13 @@ export default function BoxMenuFilter() {
 
     function onCheckItem(obj) {
 
-        console.log("checkkk");
-        console.log(obj);
-        console.log("---checkkk---");
-
-        if (checkedItem.FieldValueId == obj.FieldValueId ) return SetCheckedItem(false);
-
-        SetCheckedItem(obj);        
+        //verificação para fazer o efeito de check e uncheck e não deixar aplicar o mesmo item
+        if ( checkedItem.findIndex( i => i.FieldValueId === obj.FieldValueId ) == -1 ) {
+            SetCheckedItem([...checkedItem, obj ]);
+        } else {
+            const arrayFilter = checkedItem.filter( (e) => e.FieldValueId != obj.FieldValueId);
+            SetCheckedItem(arrayFilter);
+        }
 
     }
 
@@ -104,6 +103,18 @@ export default function BoxMenuFilter() {
 
     }
 
+    function clearFilter() {
+
+        SetCheckedItem([]) //limpa as opçoes de filtro nesse componente
+        dispatch({ type: 'CLEAR_FILTER' }); //dispara para limpar o filtro do componente result
+        onToggleMenu('CLOSE_FILTER');
+    }
+
+    function removeFilter(filter) {
+        ///procuro no array todos os itens q sejam diferente dos que foi selecionado para assim dar esse efeito de remoção
+        SetCheckedItem(checkedItem.filter((este, i) => este.TitleFilter != filter ));        
+    }
+
     return(
 
         <Animated.View style={{ ...style.boxMenu, transform: [{ translateX: styleLeftFilter }] }} >
@@ -126,14 +137,26 @@ export default function BoxMenuFilter() {
 
                 <View style={ style.filterByMenu } >
                     
-                    <Text>Filtrados Por:</Text>                            
+                    <Text>{ checkedItem.length > 0 ? "Filtrados Por:": "" }</Text>                            
+                    
+                    {
 
-                    <TouchableOpacity style={ style.filteredItem } >
+                        checkedItem
+                        // .filter( (e, i) => (checkedItem.indexOf(e.TitleFilter) == i) ) //remover os itens duplicados
+                        .map( (e, i) => {
 
-                        <Text style={{ color: '#AACE37' }} >Categoria    x</Text>
+                            checkedItem
+                            return ( 
+                                <TouchableOpacity key={i} onPress={ () => removeFilter(e.TitleFilter) } style={ style.filteredItem } >
 
-                    </TouchableOpacity>
-
+                                    <Text style={{ color: '#AACE37' }} >{e.TitleFilter}    x</Text>
+            
+                                </TouchableOpacity>
+                            )
+                        })
+                        //
+                    }
+                    
                 </View>
                 
                 <ScrollView>
@@ -173,7 +196,7 @@ export default function BoxMenuFilter() {
                                             value="first"
                                             color="#AACE37"
                                             onPress={ () => onCheckItem('Todas Categorias') }
-                                            status={ checkedItem ? 'checked' : 'unchecked' }                                            
+                                            status={ checkedItem.length > 0 ? 'checked' : 'unchecked' }                                            
                                         />
                                     <Text style={{ paddingRight: 10 }} >
                                         Todas Categorias
@@ -216,10 +239,9 @@ export default function BoxMenuFilter() {
                     {
                         //Deve ser trocado para o flatlist onde traz mais performace para o app
                         itemFilter.map( (e, i) => {
-                            console.log(e)
-                            console.log(i)
-
-                            let FieldId = e.FieldId
+                            
+                            let FieldId = e.FieldId;
+                            let TitleFilter = e.Name;
 
                             return (
 
@@ -229,7 +251,7 @@ export default function BoxMenuFilter() {
                                         onPress={ () => handleItemMenu(e) }    
                                         style={ style.itemMenuLv1 } 
                                     >
-                                        <Text>{e.Name}</Text>
+                                        <Text>{e.Name.toUpperCase()}</Text>
                                         <Text style={{ fontSize: 23 }} > 
                                             { itemMenu && itemMenu.name == e.Name ? '-' : '+' }
                                         </Text>
@@ -249,8 +271,8 @@ export default function BoxMenuFilter() {
                                                     <RadioButton
                                                             value="first"
                                                             color="#AACE37"
-                                                            status={ checkedItem.FieldValueId == e.Value ? 'checked' : 'unchecked' }
-                                                            onPress={ () => onCheckItem({ FieldId, FieldValueId: e.Value }) }
+                                                            status={ checkedItem.findIndex( i => i.FieldValueId === e.Value ) != -1 ? 'checked' : 'unchecked' }
+                                                            onPress={ () => onCheckItem({ TitleFilter, FieldId, FieldValueId: e.Value }) }
                                                         />
                                                     <Text style={{ paddingRight: 10 }} >
                                                         { e.Value }
@@ -286,7 +308,10 @@ export default function BoxMenuFilter() {
                         <Text style={{ color: 'white', textTransform: 'uppercase', textAlign: 'center', fontSize: 14 }} >Aplicar filtro</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={{ backgroundColor: '#969696', padding: 16, borderRadius: 8 }} >
+                    <TouchableOpacity 
+                        style={{ backgroundColor: '#969696', padding: 16, borderRadius: 8 }} 
+                        onPress={ clearFilter }
+                        >
                         <Text style={{ color: 'white', textTransform: 'uppercase', textAlign: 'center', fontSize: 14 }} >Limpar filtro</Text>
                     </TouchableOpacity>
 

@@ -11,19 +11,11 @@ const styles = StyleSheet.create({
     boxShadow: {
         position: 'absolute', 
         top: 135,  
-        elevation: 5, 
+        elevation: 7,
         zIndex: 6, 
         backgroundColor: 'rgba(67, 67, 67, 0.7)',        
         width: Dimensions.get('window').width, 
         height: Dimensions.get('window').height
-    },
-
-    ContainerResult: {
-        width: Dimensions.get('window').width,
-        maxWidth: Dimensions.get('window').width,
-        flexWrap: 'wrap',
-        backgroundColor: '#fff',
-        elevation: 1
     },
 
 });

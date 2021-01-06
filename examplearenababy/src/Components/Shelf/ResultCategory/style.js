@@ -8,30 +8,42 @@ const color_gray_light = '#969696' ;
 const styles = StyleSheet.create({
 
     container: {
+        position: 'relative',
+        width: Dimensions.get('window').width,
+        maxWidth: Dimensions.get('window').width,
+        backgroundColor: '#fff',
+        elevation: 7,
         justifyContent: 'center',
-        flexWrap: 'wrap',
         alignItems: 'center',
         paddingRight: 10,
         paddingLeft: 10,
-        paddingTop: 32,
-        width: Dimensions.get('window').width
+        paddingBottom: 100
+    },
+
+    listResult: {
+        paddingTop: 30,
+        marginBottom: 50
     },
 
     item: {
-        margin: 1,
         marginRight: 10,
         padding: 10,
+        paddingTop: 0,
         marginBottom: 20,
         borderRadius: 8,
         borderColor: 'rgba(0,0,0, 0.08)',
         borderWidth: 1,
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end'
     },
 
     container_img: {
         position: 'relative',
         marginBottom: 10
     },  
+
+    img_product: {
+        height: 120
+    },
 
     desconto: {
         backgroundColor: color_red,

@@ -26,11 +26,12 @@ export default function Category({ route, navigation }) {
 
     const dispatch = useDispatch();
 
-    const { opacity } = useSelector( state => state.filterCategory );
+    const { opacity, elevation } = useSelector( state => state.filterCategory );
 
     const opacityShadow = useRef(new Animated.Value(Number(opacity))).current;
 
     useEffect( () => {
+
         //Animação opacidade para o box-shadow
         Animated.timing(
             opacityShadow,{
@@ -84,7 +85,7 @@ export default function Category({ route, navigation }) {
                 
             </View>
 
-            <Animated.View style={{ ...style.boxShadow, opacity: opacityShadow }} >
+            <Animated.View style={{ ...style.boxShadow, opacity: opacityShadow, elevation }} >
 
             </Animated.View>
 
@@ -93,9 +94,9 @@ export default function Category({ route, navigation }) {
 
             <BoxOrderBy />
 
-            <ScrollView style={ style.ContainerResult }>  
-                <ResultCategory busca={`${Busca.departament}`} />
-            </ScrollView>
+        
+            <ResultCategory busca={`${Busca.departament}`} />
+        
 
         </View>
         
