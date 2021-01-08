@@ -1,29 +1,29 @@
-const INITAL_STATE = {
-    posFilter: -410,
-    posOrder: 410,
-    opacity: 0,
-    elevation: 5,
-}
+const INITAL_STATE = [
 
-export default function step( state = INITAL_STATE, action ) {
+]
+
+export default function Filter( state = INITAL_STATE, action ) {
 
     switch (action.type) {
 
-        case 'CLOSE_FILTER':
-
-            return state = INITAL_STATE;
-
-        case 'OPEN_BOX_FILTER':
-
-            return { posFilter: action.posActive  , posOrder: 410 , opacity: 1, elevation: 8 }
+        // case 'ORDER_BY':  
+        //     console.log('ORDER BY REDUCER')
+        //     console.log(action.orderBy);
+        //     console.log(action.checkedItem)
+        //     console.log('=----------- ORDER BY REDUCER ---------------=');
             
-        case 'OPEN_BOX_ORDER':
-            console.log("OPEN_BOX_ORDER")
-            console.log(state)
-            console.log('=---------------------------=')
+        //     return action.checkedItem ? [ ...action.checkedItem ,...action.orderBy ]: action.orderBy;
         
-            return { posOrder: action.posActive , posFilter: -410, opacity: 1, elevation: 8 }
-    
+        case 'FILTER':  
+            console.log('FILTERRR REDUCER')
+            console.log(action.checkedItem);
+            console.log('=----------- FILTERRR REDUCER ---------------=');
+            
+            return action.checkedItem;
+
+        case 'CLEAR_FILTER':  
+            return INITAL_STATE;
+            
         default:
 
             return state;

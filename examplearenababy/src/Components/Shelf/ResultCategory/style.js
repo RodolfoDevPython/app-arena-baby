@@ -13,11 +13,12 @@ const styles = StyleSheet.create({
         maxWidth: Dimensions.get('window').width,
         backgroundColor: '#fff',
         elevation: 7,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: 'flex-start',
+        alignItems: 'baseline',
         paddingRight: 10,
         paddingLeft: 10,
-        paddingBottom: 100
+        paddingBottom: 100,
+        height: Dimensions.get("screen").height
     },
 
     listResult: {
@@ -26,6 +27,7 @@ const styles = StyleSheet.create({
     },
 
     item: {
+        position: 'relative',
         marginRight: 10,
         padding: 10,
         paddingTop: 0,
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         borderColor: 'rgba(0,0,0, 0.08)',
         borderWidth: 1,
-        justifyContent: 'flex-end'
+        justifyContent: 'space-between'
     },
 
     container_img: {
@@ -45,10 +47,21 @@ const styles = StyleSheet.create({
         height: 120
     },
 
+    prime: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 5, 
+        paddingRight: 7,
+        borderRadius: 5,
+        backgroundColor: '#000'
+    },
+
     desconto: {
+        flexDirection: 'row',
         backgroundColor: color_red,
-        paddingTop: 3,
-        paddingBottom: 2,
+        paddingTop: 5,
+        paddingBottom: 5,
         paddingLeft: 6,
         paddingRight: 6,
         borderRadius: 5,
@@ -68,17 +81,18 @@ const styles = StyleSheet.create({
     },
 
     brand: {
-        fontSize: 12,
+        fontSize: 10,
+        lineHeight: 10,
         fontWeight: '300',
         color: color_gray_light,
         textTransform: 'uppercase'
     },  
 
     name: {
-        marginTop: 5,
+        marginTop: 7,
         marginBottom: 11,
-        fontSize: 14,
-        lineHeight: 15,
+        fontSize: 12,
+        lineHeight: 12,
         fontWeight: '300',
         textAlign: 'left',
         color: color_gray,
@@ -88,10 +102,20 @@ const styles = StyleSheet.create({
     },
 
     price: {
-        fontSize: 18,
+        fontSize: 15,
+        lineHeight: 15,
         fontWeight: '700',
         color: color_gray
     },  
+
+    oldPrice: {
+        fontSize: 11,
+        lineHeight: 11,
+        fontWeight: '300',
+        color: color_gray,
+        textDecorationLine: 'line-through',
+        opacity: .3
+    },
 
     box_buy: {
         borderRadius: 5,

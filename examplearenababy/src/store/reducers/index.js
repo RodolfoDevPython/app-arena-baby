@@ -2,12 +2,15 @@ import { combineReducers } from "redux";
 
 
 import stepReducer from "./steps";
+import boxMenuCategory from "./boxMenuCategory";
 import filterCategory from "./filterCategory";
-import resultCategory from "./resultCategory";
-
+import orderByCategory from "./orderByCategory";
+import menuCategoryMain from "./menuCategoryMain";
 
 export default combineReducers({
     step: stepReducer,
+    boxMenuCategory,
     filterCategory,
-    resultCategory
+    orderByCategory,
+    menuCategoryMain
 });

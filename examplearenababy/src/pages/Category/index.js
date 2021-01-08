@@ -21,14 +21,19 @@ export default function Category({ route, navigation }) {
     const { Busca } = route.params;
 
     console.log('Buscaaaaaaaaaaaaa')
-    console.log(Busca.departament)
+    console.log(Busca)
     console.log('----------------=Buscaaaaaaaaaaaaa=-------------')
 
     const dispatch = useDispatch();
 
-    const { opacity, elevation } = useSelector( state => state.filterCategory );
+    const { opacity, elevation } = useSelector( state => state.boxMenuCategory );
 
     const opacityShadow = useRef(new Animated.Value(Number(opacity))).current;
+
+    useEffect( () => {
+        console.log("dispatch")
+        dispatch({ type: "CATEGORY_SELETED", category: Busca.category, search: Busca.search });
+    }, [ Busca ]);
 
     useEffect( () => {
 
@@ -95,7 +100,7 @@ export default function Category({ route, navigation }) {
             <BoxOrderBy />
 
         
-            <ResultCategory busca={`${Busca.departament}`} />
+            <ResultCategory />
         
 
         </View>

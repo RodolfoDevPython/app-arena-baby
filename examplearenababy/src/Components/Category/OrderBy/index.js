@@ -11,8 +11,10 @@ import style from "./style";
 export default function BoxMenuFilter() {
 
     const dispatch = useDispatch();
+
+    const [ orderBy, setOrderBy ] = useState("");
     
-    const { posOrder } = useSelector( state => state.filterCategory );
+    const { posOrder } = useSelector( state => state.boxMenuCategory );
 
     const styleRightOrder = useRef(new Animated.Value(Number(posOrder))).current;
     
@@ -27,6 +29,13 @@ export default function BoxMenuFilter() {
         ).start();
 
     }, [ posOrder ]);
+
+    useEffect( () => {
+        console.log(orderBy)
+
+        dispatch({ type: 'ORDER_BY', orderBy });
+
+    }, [ orderBy ]);
 
     function onToggleMenu(type) {
 
@@ -56,73 +65,79 @@ export default function BoxMenuFilter() {
 
             </View>
 
-            <View style={ style.filterByMenu } >
-                
-                <Text>Ordernador Por:</Text>                            
+            {
+                orderBy ? (
 
-                <TouchableOpacity style={ style.sortedItem } >
+                <View style={ style.filterByMenu } >
+                    <Text>Ordernador Por:</Text>                            
 
-                    <Text style={{ color: '#AACE37', alignItems: 'flex-start' }} >Mais Vendidos    x</Text>
+                    <TouchableOpacity style={ style.sortedItem } onPress={ () => setOrderBy("") } >
 
-                </TouchableOpacity>
+                        <Text style={{ color: '#AACE37', alignItems: 'center', justifyContent: 'space-between' }} >{orderBy.title}</Text>
+                        <Text style={{ transform: [ { rotate: '46deg' } ], color: '#AACE37', alignItems: 'center', fontSize: 25, fontWeight: '100' }} >+</Text>
 
-            </View>
+                    </TouchableOpacity>
+
+                </View>
+
+            ) : <View style={ style.filterByMenu } ></View>}
+            
             
             <ScrollView>
 
                 <View>
-                    <TouchableOpacity style={ style.itemMenuLv1 } >
+                    <TouchableOpacity style={ style.itemMenuLv1 } onPress={ () => setOrderBy({ title: "MAIS VENDIDOS", script: "?O=OrderByTopSaleDESC" }) } >
                         <Text>MAIS VENDIDOS</Text>                            
                     </TouchableOpacity>
                 </View>
 
                 <View>
-                    <TouchableOpacity style={ style.itemMenuLv1 } >
+                    <TouchableOpacity style={ style.itemMenuLv1 } onPress={ () => setOrderBy({ title: "MELHORES AVALIAÇÕES" , script: "?O=OrderByReviewRateDESC" }) } >
                         <Text>MELHORES AVALIAÇÕES</Text>                            
                     </TouchableOpacity>
                 </View>
 
                 <View>
-                    <TouchableOpacity style={ style.itemMenuLv1 } >
+                    <TouchableOpacity style={ style.itemMenuLv1 } onPress={ () => setOrderBy({ title: "DATA DE LANCAMENTO", script: "?O=OrderByReleaseDateDESC" }) } >
                         <Text>DATA DE LANCAMENTO</Text>                            
                     </TouchableOpacity>
                 </View>
 
                 <View>
-                    <TouchableOpacity style={ style.itemMenuLv1 } >
+                    <TouchableOpacity style={ style.itemMenuLv1 } onPress={ () => setOrderBy({ title: "MENOR PRECO" , script: "?O=OrderByPriceASC" }) } >
                         <Text>MENOR PRECO</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View>
-                    <TouchableOpacity style={ style.itemMenuLv1 } >
+                    <TouchableOpacity style={ style.itemMenuLv1 } onPress={ () => setOrderBy({ title: "MAIOR PRECO", script: "?O=OrderByPriceDESC" }) } >
                         <Text>MAIOR PRECO</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View>
-                    <TouchableOpacity style={ style.itemMenuLv1 } >
+                    <TouchableOpacity style={ style.itemMenuLv1 } onPress={ () => setOrderBy({ title: "A - Z", script: "?O=OrderByNameASC" }) } >
                         <Text>A - Z</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View>
-                    <TouchableOpacity style={ style.itemMenuLv1 } >
-                        <Text>Z- A </Text>
+                    <TouchableOpacity style={ style.itemMenuLv1 } onPress={ () => setOrderBy({ title: "Z- A", script: "?O=OrderByNameDESC" }) } >
+                        <Text>Z - A</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View>
-                    <TouchableOpacity style={ style.itemMenuLv1 } >
+                    <TouchableOpacity style={ style.itemMenuLv1 } onPress={ () => setOrderBy({ title: "MAIOR DESCONTO", script: "?O=OrderByBestDiscountDESC" }) } >
                         <Text>MAIOR DESCONTO</Text>
                     </TouchableOpacity>
                 </View>
 
-                <View>
+                {/* <View>
                     <TouchableOpacity style={ style.itemMenuLv1 } >
                         <Text>MENOR DESCONTO</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
 
             </ScrollView>
             

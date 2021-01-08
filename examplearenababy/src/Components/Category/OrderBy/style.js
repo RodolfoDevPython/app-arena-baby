@@ -55,12 +55,14 @@ const styles = StyleSheet.create({
 
     sortedItem: {
         marginTop: 12,
-        padding: 5, 
+        padding: 8, 
         borderWidth: 1, 
         borderColor: '#AACE37', 
-        maxWidth: 170, 
+        maxWidth: 200, 
         alignItems: 'center', 
-        borderRadius: 70
+        borderRadius: 70,
+        flexDirection: 'row',
+        justifyContent: 'space-around'
     },
 
     itemMenuLv1: {

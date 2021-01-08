@@ -62,10 +62,10 @@ export default function Header() {
                     </View>
                 </View>
 
-                <View style={ style.slick }>   
+                {/* <View style={ style.slick }>   
 
                 
-                </View>
+                </View> */}
             </InsetShadow>
 
         </View>

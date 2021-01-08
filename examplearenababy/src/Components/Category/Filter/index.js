@@ -16,26 +16,46 @@ export default function BoxMenuFilter() {
 
     const [ itemFilter, setItemFilter ] = useState([]);
     
-    const { posFilter } = useSelector( state => state.filterCategory );
+    const { posFilter } = useSelector( state => state.boxMenuCategory );
+
+    const { category } = useSelector( state => state.menuCategoryMain );
+
+    console.log("Box menu")
+    console.log(category)
+    console.log(" ---=== Box menu  =----")
 
     const [ itemMenu , setItemMenu ] = useState();
     //const [ posFilter, setPosFilter ] = useState(-400);
 
     const [ checkedItem, SetCheckedItem ] = useState([]);
 
+    const [ checkedCategory, SetCheckedCategory ] = useState([]);
+
     const styleLeftFilter = useRef(new Animated.Value(posFilter)).current;
 
     useEffect( () => {
 
-        async function fetchData() {
-            const { data } = await api.get('/catalog_system/pub/specification/field/listByCategoryId/3');
+        if (category) {
+            async function fetchData() {
 
-            setItemFilter(data)
+                console.log("filtrooo")
+                console.log(category)
+                console.log(`/catalog_system/pub/specification/field/listByCategoryId/${category.id}`);
+    
+                const { data } = await api.get(`/catalog_system/pub/specification/field/listByCategoryId/${category.id}`);
+                
+                console.log(data);
+                console.log("-------------= filtrooo =--------")
+    
+                setItemFilter(data)
+            }
+    
+            fetchData();
         }
+        
+        
 
-        fetchData();
-
-    }, [ ]);
+    }, [ category ]);
 
     useEffect( () => {
 
@@ -111,8 +131,25 @@ export default function BoxMenuFilter() {
     }
 
     function removeFilter(filter) {
-        ///procuro no array todos os itens q sejam diferente dos que foi selecionado para assim dar esse efeito de remoção
-        SetCheckedItem(checkedItem.filter((este, i) => este.TitleFilter != filter ));        
+
+        if (filter == 'Categoria') {
+            SetCheckedCategory([]);
+        } else {
+            ///procuro no array todos os itens q sejam diferente dos que foi selecionado para assim dar esse efeito de remoção
+            SetCheckedItem(checkedItem.filter((este, i) => este.TitleFilter != filter ));        
+        }
+        
+    }
+
+    function onCheckCategory(obj) {
+
+        //verificação para fazer o efeito de check e uncheck e não deixar aplicar o mesmo item
+        if ( checkedCategory.findIndex( i => i.name === obj.name ) == -1 ) {
+            SetCheckedCategory([ obj ]);
+        } else {
+            // const arrayFilter = checkedCategory.filter( (e) => e.name != obj.name);
+            SetCheckedCategory([]);
+        }
     }
 
     return(
@@ -137,7 +174,7 @@ export default function BoxMenuFilter() {
 
                 <View style={ style.filterByMenu } >
                     
-                    <Text>{ checkedItem.length > 0 ? "Filtrados Por:": "" }</Text>                            
+                    <Text>{ checkedItem.length > 0 || checkedCategory.length > 0 ? "Filtrados Por:": "" }</Text>                            
                     
                     {
 
@@ -154,7 +191,21 @@ export default function BoxMenuFilter() {
                                 </TouchableOpacity>
                             )
                         })
-                        //
+                        //                        
+                    }
+
+                    {
+                        checkedCategory.map( (e, i) => {
+
+                            //checkedItem
+                            return ( 
+                                <TouchableOpacity key={i} onPress={ () => removeFilter("Categoria") } style={ style.filteredItem } >
+
+                                    <Text style={{ color: '#AACE37' }} >Categoria   x</Text>
+            
+                                </TouchableOpacity>
+                            )
+                        })
                     }
                     
                 </View>
@@ -190,21 +241,27 @@ export default function BoxMenuFilter() {
                             
                             <View style={{ padding: 10, paddingLeft: 28, paddingRight: 38 }} >
 
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }} >
+                                 {
 
-                                    <RadioButton
-                                            value="first"
-                                            color="#AACE37"
-                                            onPress={ () => onCheckItem('Todas Categorias') }
-                                            status={ checkedItem.length > 0 ? 'checked' : 'unchecked' }                                            
-                                        />
-                                    <Text style={{ paddingRight: 10 }} >
-                                        Todas Categorias
-                                    </Text>
+                                    category.children.map( (e, i) => (
 
-                                </View>
+                                           <View style={{ flexDirection: 'row', alignItems: 'center' }} >
 
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }} >
+                                                <RadioButton
+                                                        value="first"
+                                                        color="#AACE37"
+                                                        onPress={ () => onCheckCategory(e) }
+                                                        status={ checkedCategory.findIndex( i => i.name === e.name ) != -1 ? 'checked' : 'unchecked' }
+                                                    />
+                                                <Text style={{ paddingRight: 10 }} >
+                                                    {e.name}
+                                                </Text>
+
+                                            </View> 
+                                    ))
+
+                                 }  
+                                {/* <View style={{ flexDirection: 'row', alignItems: 'center' }} >
                                     <RadioButton
                                             value="first"
                                             color="#AACE37"
@@ -226,7 +283,7 @@ export default function BoxMenuFilter() {
                                     <Text style={{ paddingRight: 10 }} >
                                         Novos de Fábrica
                                     </Text>
-                                </View>
+                                </View> */}
                                 
                             </View>
                             )
