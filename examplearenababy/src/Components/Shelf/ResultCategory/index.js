@@ -77,7 +77,7 @@ export default function ResultCategory() {
         console.log(`/catalog_system/pub/products/search?${busca}${urlFilter}&_from=${rangeResult.from}&_to=${rangeResult.to}`)
         console.log("=--------------=")
 
-        const response = await api.get(`/catalog_system/pub/products/search?${busca.trim()}${urlFilter}&_from=${rangeResult.from}&_to=${rangeResult.to}`);    
+        const response = await api.get(`/catalog_system/pub/products/search?${busca}${urlFilter}&_from=${rangeResult.from}&_to=${rangeResult.to}`);    
 
         //1 validação -> ver se for acionado o refresh 
         
@@ -120,6 +120,8 @@ export default function ResultCategory() {
 
     useEffect( () => {
 
+        Clear();
+        
         if (category) { 
             search ? setBusca(`fq=C:${category.id}${search}`) : setBusca(`fq=C:${category.id}`);
 
@@ -139,6 +141,8 @@ export default function ResultCategory() {
         // if (orderBy.script || filters && orderBy.script || filters == '' ){
         //     console.log("aquiiiii no if")
 
+        Clear();
+
         if (filters) {
             fetchData(true);        
         }        
@@ -148,6 +152,7 @@ export default function ResultCategory() {
         //     fetchData();        
         // }
         
+        Clear();
 
     }, [ filters ]);
 
@@ -163,15 +168,36 @@ export default function ResultCategory() {
             console.log("aquiiiii no else")
             fetchData();        
         }
+
+        Clear();
         
 
     }, [ orderBy ]);
 
     useEffect( () => {
         console.log("busca")
-        SetItems([]);
-        fetchData(true)
+        Clear();
+
+        fetchData(true);
+        
+        console.log("=------------------- Busca -----------------=")
+
     }, [ busca ]);
+
+    useEffect( () => {
+
+        console.log("Busca .....")
+
+        //console.log(items)
+
+        if (items.length > 0) {
+            console.log("tem itemmm")
+        } else {
+            console.log("Não tem itemmm");
+            //navigation.navigate('SearchEmpty');
+        }
+
+    }, [ items ])
 
     function Clear() {
         setRangeResult({ from: 0, to: 9 });
@@ -237,7 +263,7 @@ export default function ResultCategory() {
                                     <View style={ style.item } >
 
                                         <View style={{ flexDirection: 'row', marginTop: 10, justifyContent: 'space-between' }} >
-                                            <TouchableOpacity style={{ marginRight: 10 }} >
+                                            <TouchableOpacity style={{ marginRight: 10 }}>
 
                                                 <View style={ style.prime }>
                                                     <IconPrime /> 
@@ -268,7 +294,7 @@ export default function ResultCategory() {
 
                                             <View style={{ position: 'absolute', bottom: 0, flexDirection: 'row' }}>
 
-                                                <Text style={ style.condicao }> { item['Condição'] } </Text>
+                                                <Text style={{ ...style.condicao, backgroundColor: item['Condição'] == 'Novo de Fábrica' ? '#00a0c6': '#E6007E' }}> { item['Condição'] } </Text>
 
                                             </View>
 

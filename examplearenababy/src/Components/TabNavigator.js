@@ -4,6 +4,7 @@ import { Image } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Category from '../pages/Category';
+import Product from "../pages/Product";
 
 import Home from "../pages/Home";
 
@@ -55,6 +56,15 @@ export default function TabNavigator() {
             <Tab.Screen 
                 name="Category"
                 component={ Category }
+                options={{
+                    tabBarButton: () => null
+                }}
+
+            />
+
+            <Tab.Screen 
+                name="Product"
+                component={ Product }
                 options={{
                     tabBarButton: () => null
                 }}

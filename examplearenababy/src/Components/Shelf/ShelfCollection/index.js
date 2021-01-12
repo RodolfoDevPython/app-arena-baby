@@ -14,10 +14,14 @@ import icon_desconto from "../../../assets/png/icon_desconto.png";
 
 import Loading from "../../skeleton/ShelfCollection";
 
+import { useNavigation } from "@react-navigation/native";
+
 
 export default function Shelf({ colecao = 139 }) {
 
     const [ items, SetItems] = useState([]);
+
+    const navigation = useNavigation();
 
     useEffect( () => {
 
@@ -35,6 +39,16 @@ export default function Shelf({ colecao = 139 }) {
 
     function handleAddMiniCart(item) {
         console.log(item);
+    }
+
+    function GoToProduct(product) {
+        console.log(product);
+
+        navigation.navigate('Product', {
+                product
+            }
+        )
+
     }
 
     return (
@@ -59,7 +73,10 @@ export default function Shelf({ colecao = 139 }) {
                                 <>
                                     <View style={ style.item } >
 
-                                        <View style={ style.container_img }>
+                                        <TouchableOpacity 
+                                            style={ style.container_img }
+                                            onPress={ () => GoToProduct(item) }    
+                                        >
 
                                             <Image 
                                                 resizeMode="contain"
@@ -82,9 +99,9 @@ export default function Shelf({ colecao = 139 }) {
 
                                             </View>
 
-                                        </View>
+                                        </TouchableOpacity>
 
-                                        <View>
+                                        <TouchableOpacity onPress={ () => GoToProduct(item) }   >
                                             
                                             <Text style={ style.brand } > { item['brand'] } </Text>
 
@@ -92,7 +109,7 @@ export default function Shelf({ colecao = 139 }) {
 
                                             <Text style={ style.price } > <Text style={{ ...style.price, fontSize: 15 }} >R$</Text>{ currency(Price) } </Text>
 
-                                        </View>
+                                        </TouchableOpacity>
 
                                         <TouchableOpacity 
                                             onPress={ () => handleAddMiniCart('') }

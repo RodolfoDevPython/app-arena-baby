@@ -259,15 +259,15 @@ export default function Items() {
                             ? (
                                 <View style={{ flexDirection: 'column', padding: 20, paddingLeft: 30,  backgroundColor: '#F5F5F5' }} >
 
-                                    <TouchableOpacity onPress={ () => onLink({ category: item }) }  >
+                                    <TouchableOpacity onPress={ () => onLink({ category: item, search: '' }) }  >
                                         <Text style={{ fontWeight: '700', fontSize: 13, lineHeight: 13 }} >VER TODOS</Text>
                                     </TouchableOpacity>
 
-                                    <TouchableOpacity onPress={ () => onLink({ category: item }) } >
+                                    <TouchableOpacity onPress={ () => onLink({ category: item, search: '' }) } >
                                         <Text style={{ fontWeight: '300', fontSize: 13, marginTop: 20, lineHeight: 13 }} >ACABOU DE CHEGAR</Text>
                                     </TouchableOpacity>
 
-                                    <TouchableOpacity onPress={ () => onLink({ category: item }) } >
+                                    <TouchableOpacity onPress={ () => onLink({ category: item, search: '' }) } >
                                         <Text style={{ fontWeight: '300', fontSize: 13, marginTop: 20, lineHeight: 13 }} >NUNCA USADOS</Text>
                                     </TouchableOpacity>
 
@@ -299,7 +299,7 @@ export default function Items() {
                                         style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}
                                         onPress={ onClickAbasCategorias }
                                         >
-                                        <Text style={{ fontWeight: '300', fontSize: 13 }} >CATEGORIAS</Text>
+                                        <Text style={{ fontWeight: '700', fontSize: 13 }} >CATEGORIAS</Text>
 
                                         <Animated.View style={{ transform: [{rotate: rotateCatg }] }} > 
                                             {/* <TouchableOpacity name={ Title } onPress={ () => onClickAbas(Title) } > */}
@@ -312,14 +312,16 @@ export default function Items() {
                                     {
                                         toggleMenu.sub_isActive
                                         ? (
-                                            <View style={{ backgroundColor: '#F5F5F5' }}>
+                                            <View style={{ backgroundColor: '#F5F5F5', paddingLeft: 30 }}>
                                                 { 
                                                     item.children.map( (e, i) => (
 
                                                         <TouchableOpacity 
-                                                        onPress={ () => onLink({ category: item , search: `/${e.id}` }) }
+                                                            onPress={ () => onLink({ category: item , search: `/${e.id}` }) }
                                                         >
-                                                            <Text style={{ fontWeight: '300', fontSize: 13, lineHeight: 13 }} key={i} >{e.name}</Text>
+                                                            <Text 
+                                                                style={{ fontWeight: '300', fontSize: 13, marginTop: 20, lineHeight: 13, textTransform: 'uppercase' }} 
+                                                                key={i} >{e.name}</Text>
                                                         </TouchableOpacity>
                                                     
                                                     )) 
@@ -339,7 +341,7 @@ export default function Items() {
                                             onPress={ onClickAbasTopMarcas }
                                         >
 
-                                            <Text style={{ fontWeight: '300', fontSize: 13, lineHeight: 13 }} >TOP MARCAS</Text>
+                                            <Text style={{ fontWeight: '700', fontSize: 13, lineHeight: 13 }} >TOP MARCAS</Text>
 
                                             <Animated.View style={{ transform: [{rotate: rotateTopMarcas }] }} > 
                                                 {/* <TouchableOpacity name={ Title } onPress={ () => onClickAbas(Title) } > */}

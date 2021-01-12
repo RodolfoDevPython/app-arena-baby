@@ -116,7 +116,18 @@ export default function BoxMenuFilter() {
 
     function setResult() {
 
-        if (checkedItem) { 
+        if(checkedCategory.length > 0) {
+            console.log("checkedItem");
+            
+            //ajuste para concatenar os ids da categoria pai e categoria filho
+            //checkedCategory[0].id = `${category.id}/${checkedCategory[0].id}` 
+            
+            //console.log(checkedCategory);
+            dispatch({ type: "CATEGORY_SELETED", category: category, search: `/${checkedCategory[0].id}` });
+            console.log("=--------------------=");
+        } else if (checkedItem.length > 0) { 
+            console.log("checkedItem")
+            console.log(checkedItem)
             dispatch({ type: 'FILTER', checkedItem });
             onToggleMenu('CLOSE_FILTER');
         }
@@ -128,6 +139,7 @@ export default function BoxMenuFilter() {
         SetCheckedItem([]) //limpa as opçoes de filtro nesse componente
         dispatch({ type: 'CLEAR_FILTER' }); //dispara para limpar o filtro do componente result
         onToggleMenu('CLOSE_FILTER');
+
     }
 
     function removeFilter(filter) {
@@ -212,6 +224,8 @@ export default function BoxMenuFilter() {
                 
                 <ScrollView>
 
+                { 
+                    category ? 
                     <View>
 
                         <TouchableOpacity 
@@ -241,26 +255,28 @@ export default function BoxMenuFilter() {
                             
                             <View style={{ padding: 10, paddingLeft: 28, paddingRight: 38 }} >
 
-                                 {
+                                {
 
+                                    category.children.length > 0 && category ? 
                                     category.children.map( (e, i) => (
 
-                                           <View style={{ flexDirection: 'row', alignItems: 'center' }} >
+                                        <View key={i} style={{ flexDirection: 'row', alignItems: 'center' }} >
 
-                                                <RadioButton
-                                                        value="first"
-                                                        color="#AACE37"
-                                                        onPress={ () => onCheckCategory(e) }
-                                                        status={ checkedCategory.findIndex( i => i.name === e.name ) != -1 ? 'checked' : 'unchecked' }
-                                                    />
-                                                <Text style={{ paddingRight: 10 }} >
-                                                    {e.name}
-                                                </Text>
+                                            <RadioButton
+                                                value="first"
+                                                color="#AACE37"
+                                                onPress={ () => onCheckCategory(e) }
+                                                status={ checkedCategory.findIndex( i => i.name === e.name ) != -1 ? 'checked' : 'unchecked' }
+                                            />
+                                            <Text style={{ paddingRight: 10 }} >
+                                                {e.name}
+                                            </Text>
 
-                                            </View> 
+                                        </View> 
                                     ))
+                                    : null
 
-                                 }  
+                                }  
                                 {/* <View style={{ flexDirection: 'row', alignItems: 'center' }} >
                                     <RadioButton
                                             value="first"
@@ -292,7 +308,7 @@ export default function BoxMenuFilter() {
 
                     </View>
 
-
+                    : null }
                     {
                         //Deve ser trocado para o flatlist onde traz mais performace para o app
                         itemFilter.map( (e, i) => {

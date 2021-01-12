@@ -36,6 +36,12 @@ export default function Router() {
                     component={ Tap }   
                 />
 
+                <Stack.Screen   
+                    name="Product" 
+                    options={{ headerShown: false }}
+                    component={ Tap }   
+                />
+
                 <Stack.Screen 
                     name="SearchEmpty" 
                     options={{ headerShown: false }}

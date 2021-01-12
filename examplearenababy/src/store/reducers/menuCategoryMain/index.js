@@ -17,6 +17,10 @@ export default function CategorySeleted( state = INITAL_STATE, action ) {
             // api.get(`/catalog_system/pub/products/search?fq=C:${action.category.id}`)
             // .then( (resp) => console.log((resp.data).length))
 
+            console.log("CATEGORY_SELETED")
+            console.log(action)
+            console.log("=---------------------=")
+
             return { category: action.category, search: action.search };
         
         default:

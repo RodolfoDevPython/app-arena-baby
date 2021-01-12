@@ -8,6 +8,8 @@ import { useNavigation, useRoute, DrawerActions } from "@react-navigation/native
 
 const _icon_minicart = require('../../../assets/png/icon-minicart.png');
 
+import IconShare from "../../../assets/svg/icon-share";
+
 import { Svg, Path } from "react-native-svg";
 
 import style from "./style.js";
@@ -42,11 +44,31 @@ export default function Drawer(props) {
                 </Svg>
             </TouchableOpacity>
 
-            <Text style={ style.title } > { route.name == "Home" ? "Categorias" : route.name } </Text>
+            <Text style={ style.title } > 
+                { 
+                    route.name == "Home" ? "Categorias" : route.name 
+                    ? route.name == "Product" :  null
+                } 
+            </Text>
 
-            <TouchableOpacity>
-                <Image source={_icon_minicart} />
-            </TouchableOpacity>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }} >
+
+                { 
+                    route.name == "Product" 
+                    ? 
+                    ( 
+                        <TouchableOpacity style={{ marginRight: 20 }} > 
+                            <IconShare />
+                        </TouchableOpacity> 
+                    ) 
+                    :null 
+                }
+                
+                <TouchableOpacity>
+                    <Image source={_icon_minicart} />
+                </TouchableOpacity>
+            </View>
+            
 
         </View>
 
