@@ -6,7 +6,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Category from '../pages/Category';
 import Product from "../pages/Product";
 
+//PAGES
 import Home from "../pages/Home";
+import NossasLojas from "../pages/NossasLojas";
 
 import DrawerNavigation from './DrawerNavigation';
 import { useRoute } from '@react-navigation/native';
@@ -73,7 +75,7 @@ export default function TabNavigator() {
 
             <Tab.Screen 
                 name="Lojas"
-                component={Home}
+                component={NossasLojas}
                 options={{
                     tabBarIcon: ({ color, size }) => (
                       <Image name="home" color={color} source={_icon_nossas_lojas} size={size} />

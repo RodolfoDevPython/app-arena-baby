@@ -9,6 +9,10 @@ import Init from "./pages/InitSteps";
 import Home from './pages/Home';
 import SearchEmpty from "./pages/SearchEmpty";
 
+import MiniCart from "./Components/MiniCart";
+
+import Checkout from "./pages/Checkout";
+
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -46,6 +50,18 @@ export default function Router() {
                     name="SearchEmpty" 
                     options={{ headerShown: false }}
                     component={ SearchEmpty }   
+                />
+
+                <Stack.Screen 
+                    name="MiniCart" 
+                    options={{ headerShown: false }}
+                    component={ MiniCart }   
+                />
+
+                <Stack.Screen 
+                    name="Checkout" 
+                    options={{ headerShown: false }}
+                    component={ Checkout }   
                 />
 
             </Stack.Navigator>

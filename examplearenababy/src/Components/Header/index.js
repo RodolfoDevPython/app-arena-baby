@@ -55,7 +55,7 @@ export default function Header() {
                             <Image source={_icon_wishlist} />
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={ () => navigation.navigate('MiniCart') } >
                             <Image source={_icon_minicart} />
                         </TouchableOpacity>
                         

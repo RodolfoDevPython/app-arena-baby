@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/geolocation": "^2.0.2",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.2",
     "@react-navigation/drawer": "^5.11.4",
@@ -20,8 +21,10 @@
     "react-content-loader": "^5.1.4",
     "react-native": "0.63.4",
     "react-native-elements": "^3.0.0-alpha.1",
+    "react-native-geolocation-service": "^5.1.1",
     "react-native-gesture-handler": "^1.9.0",
     "react-native-inset-shadow": "^1.0.3",
+    "react-native-maps": "^0.27.1",
     "react-native-paper": "^4.5.0",
     "react-native-progress": "^4.1.2",
     "react-native-reanimated": "^1.13.2",

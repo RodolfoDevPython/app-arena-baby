@@ -46,8 +46,9 @@ export default function Drawer(props) {
 
             <Text style={ style.title } > 
                 { 
-                    route.name == "Home" ? "Categorias" : route.name 
-                    ? route.name == "Product" :  null
+                    route.name == "Home" 
+                    ? "Categorias" : route.name 
+                    ? route.name == "Product" : null
                 } 
             </Text>
 
@@ -64,7 +65,7 @@ export default function Drawer(props) {
                     :null 
                 }
                 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={ () => navigation.navigate('MiniCart') } >
                     <Image source={_icon_minicart} />
                 </TouchableOpacity>
             </View>

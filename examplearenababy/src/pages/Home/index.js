@@ -44,21 +44,20 @@ export default function Home() {
                 <ScrollView >
 
                     <Slick 
-                    style={{ height: 312 }}
-                    dot={
-                        <View
-                          style={{
-                            backgroundColor: '#fff',
-                            width: 7,
-                            height: 7,
-                            borderRadius: 8,
-                            marginLeft: 5,
-                            marginRight: 5,
-                            marginTop: 3,
-                            marginBottom: 3,
-                            
-                          }}
-                        />
+                        style={{ height: 312 }}
+                        dot={
+                            <View
+                                style={{
+                                    backgroundColor: '#fff',
+                                    width: 7,
+                                    height: 7,
+                                    borderRadius: 8,
+                                    marginLeft: 5,
+                                    marginRight: 5,
+                                    marginTop: 3,
+                                    marginBottom: 3,
+                                }}
+                            />
                     }
 
                     activeDot={
