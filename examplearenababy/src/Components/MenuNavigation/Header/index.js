@@ -14,7 +14,7 @@ import { Svg, Path } from "react-native-svg";
 
 import style from "./style.js";
 
-export default function Drawer(props) {
+export default function Drawer({ is_active = false, title = null }) {
 
     const route = useRoute();    
     const navigation = useNavigation();
@@ -46,9 +46,10 @@ export default function Drawer(props) {
 
             <Text style={ style.title } > 
                 { 
-                    route.name == "Home" 
-                    ? "Categorias" : route.name 
-                    ? route.name == "Product" : null
+                    is_active && title == null 
+                    ? route.name 
+                    : title != null ? title
+                    : null
                 } 
             </Text>
 

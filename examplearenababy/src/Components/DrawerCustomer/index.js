@@ -34,10 +34,11 @@ export default function Drawer(props) {
 
     return (
         <>
-        <Header />
+        
+        <Header is_active={true} title={"CATEGORIAS"}  />
+
         <ScrollView>
         
-
             <View>
 
                 <View style={ style.header } >

@@ -74,29 +74,51 @@ export default function Home() {
                           }}
                         />
                     }
-                >
-                    <View style={ style.slick_item } >
-                        <View style={ style.box_banner }>
-                            <Text style={ style.title_banner }>50% OFF</Text>
-                            <Text style={ style.sub_title_banner } >Em Todo App</Text>
+                    >
+
+                        <View style={ style.slick_item } >
+
+                            <View style={ style.box_banner }>
+
+                                <Text style={ style.title_banner }>50% OFF</Text>
+
+                                <Text style={ style.sub_title_banner } >Em Todo App</Text>
+
+                            </View>
+
+                            <Image style={ style.img_bg } source={_image_header} />       
+
                         </View>
-                        <Image style={ style.img_bg } source={_image_header} />       
-                    </View>
-                    <View style={ style.slick_item } >
-                        <View style={ style.box_banner }>
-                            <Text style={ style.title_banner }>50% OFF</Text>
-                            <Text style={ style.sub_title_banner } >Em Todo App</Text>
+
+                        <View style={ style.slick_item } >
+
+                            <View style={ style.box_banner }>
+
+                                <Text style={ style.title_banner }>50% OFF</Text>
+
+                                <Text style={ style.sub_title_banner } >Em Todo App</Text>
+
+                            </View>
+
+                            <Image style={ style.img_bg } source={_image_header} />       
+
                         </View>
-                        <Image style={ style.img_bg } source={_image_header} />       
-                    </View>
-                    <View style={ style.slick_item } >
-                        <View style={ style.box_banner }>
-                            <Text style={ style.title_banner }>50% OFF</Text>
-                            <Text style={ style.sub_title_banner } >Em Todo App</Text>
+
+                        <View style={ style.slick_item } >
+
+                            <View style={ style.box_banner }>
+
+                                <Text style={ style.title_banner }>50% OFF</Text>
+
+                                <Text style={ style.sub_title_banner } >Em Todo App</Text>
+                                
+                            </View>
+
+                            <Image style={ style.img_bg } source={_image_header} />       
+
                         </View>
-                        <Image style={ style.img_bg } source={_image_header} />       
-                    </View>
-                </Slick>
+
+                    </Slick>
             
 
                     <View style={ style.compre_no_app }>
@@ -117,6 +139,7 @@ export default function Home() {
                     <View style={{ ...style.section, maxWidth: Dimensions.get('window').width, overflow: 'scroll' }} >
 
                         <Text style={ style.section_title } >Acacou de chegar</Text>
+                        
                         <TouchableOpacity><Text style={ style.show_more } >ver mais</Text></TouchableOpacity>
                         
                         <Shelf />

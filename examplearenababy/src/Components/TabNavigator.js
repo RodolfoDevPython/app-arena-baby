@@ -9,6 +9,7 @@ import Product from "../pages/Product";
 //PAGES
 import Home from "../pages/Home";
 import NossasLojas from "../pages/NossasLojas";
+import Credits from "../pages/Credits";
 
 import DrawerNavigation from './DrawerNavigation';
 import { useRoute } from '@react-navigation/native';
@@ -86,7 +87,7 @@ export default function TabNavigator() {
 
             <Tab.Screen 
                 name="Créditos"
-                component={Home}
+                component={Credits} 
                 options={{
                     tabBarIcon: ({ color, size }) => (
                       <Image name="home" color={color} source={_icon_creditos} size={size} />

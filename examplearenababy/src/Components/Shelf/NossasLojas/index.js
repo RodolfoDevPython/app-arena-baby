@@ -43,7 +43,7 @@ export default function NossasLojas() {
                         data={lojas}
                         horizontal={true}
                         keyExtractor={ element => ( element.id + 1) }
-                        showsHorizontalScrollIndicator={true}
+                        showsHorizontalScrollIndicator={false}
                         renderItem={ ({ item }) => {
 
                             let { endereco, bairro, estado } = item;

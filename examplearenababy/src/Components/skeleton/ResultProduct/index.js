@@ -6,7 +6,7 @@ export default function Loading(props) {
 
     return (
         <ContentLoader 
-            speed={.8}
+            speed={.7}
             width={570}
             height={500}
             viewBox="0 0 400 320"

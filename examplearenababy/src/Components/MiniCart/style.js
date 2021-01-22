@@ -8,11 +8,11 @@ const styles = StyleSheet.create({
     item: {
         flexDirection: 'row',
         alignItems: 'flex-start', 
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         borderWidth: 1, 
         borderColor: '#DBDBDB', 
         borderRadius: 5 , 
-        padding: 12 ,
+        padding: 12,
         width: Dimensions.get("window").width - 50,
         marginBottom: 16
     },

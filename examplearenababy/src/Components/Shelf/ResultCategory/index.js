@@ -132,6 +132,11 @@ export default function ResultCategory() {
             // const busca = ;
 
             Clear();
+
+        } else if (!category) {
+
+            console.log("não tem categoria selecionada")
+            
         }
 
     }, [ search ])

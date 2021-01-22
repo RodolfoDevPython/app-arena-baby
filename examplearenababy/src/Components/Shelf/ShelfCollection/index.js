@@ -61,8 +61,9 @@ export default function Shelf({ colecao = 139 }) {
                 <FlatList 
                     data={ items }
                     horizontal={ true }
+                    style={{ scrollbarColor: "#000" }}
                     keyExtractor={ element => element.items[0].itemId }
-                    showsHorizontalScrollIndicator={ true }
+                    showsHorizontalScrollIndicator={false}
                     renderItem={ ({ item }) => { 
                             
                             let { Price, ListPrice } = item.items[0].sellers[0].commertialOffer

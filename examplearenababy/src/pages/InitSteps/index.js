@@ -104,7 +104,7 @@ export default function InitStep({ navigation }) {
                                 : 
                                     <TouchableOpacity 
                                         style={{ marginLeft: 10 }}
-                                        onPress={() => handleStep( 'NEXT_STEP', step + 1, percent )}
+                                        onPress={() => navigation.navigate("Home") }
                                         >
                                         <Text style={style.txt_btn_confirm}>OK</Text>
                                     </TouchableOpacity> 

@@ -64,7 +64,7 @@ export default function Minicart({ navigation }) {
     return (
         <View style={{ backgroundColor: '#fff' }}>   
         
-            <Header />
+            <Header is_active={true} title={"ITENS DA SACOLA"} />
 
             { 
             items.length == 0
@@ -145,7 +145,7 @@ export default function Minicart({ navigation }) {
                                                 }
                                                 </View>
                                                 
-                                                <View style={{ marginLeft: -45 }} >
+                                                <View style={{ marginLeft: 5 }} >
 
                                                     <Text style={{ fontSize: 16, fontWeight: "700", lineHeight: 19 }} >
                                                     { 
@@ -158,7 +158,9 @@ export default function Minicart({ navigation }) {
                                                 </View>
 
                                                 <TouchableOpacity onPress={() => removeItem(e.product.productId)}>
+
                                                     <IconRemoveItem />
+                                                    
                                                 </TouchableOpacity>
                                                 
                                             </View>

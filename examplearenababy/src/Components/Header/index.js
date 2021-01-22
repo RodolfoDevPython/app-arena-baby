@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { View, Text, Image, ImageBackground, Dimensions } from "react-native";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { ScrollView, TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import InsetShadow  from "react-native-inset-shadow";
 
 import { useNavigation } from '@react-navigation/native';
@@ -21,6 +21,8 @@ export default function Header() {
 
     
     const navigation = useNavigation();
+
+    const [ openBoxSearch, setOpenBoxSearch ] = useState(false);
     
     function onOpenMenu() {
         console.log("aqiiiiiiiiiiiiiiiiiiiiiiii")
@@ -42,7 +44,7 @@ export default function Header() {
                             <Image source={_icon_menu} />
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={ () => { openBoxSearch ? setOpenBoxSearch(false) : setOpenBoxSearch(true) }}>
                             <Image source={_icon_search} />
                         </TouchableOpacity>
 
@@ -67,6 +69,19 @@ export default function Header() {
                 
                 </View> */}
             </InsetShadow>
+
+            {
+                openBoxSearch && 
+                (
+                    <View style={{ backgroundColor: "#fff" }} >
+                        <TextInput 
+                            style={{ height: 40, borderColor: 'gray', borderWidth: 1, backgroundColor: "#fff", margin: 10 }}
+                            placeholder={"Aquiiiiiiiiii"}
+                        />
+                    </View>
+                )
+            }
+            
 
         </View>
         

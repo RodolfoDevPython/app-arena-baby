@@ -8,6 +8,7 @@ import orderByCategory from "./orderByCategory";
 import menuCategoryMain from "./menuCategoryMain";
 import minicart from "./minicart";
 import checkout from "./checkout";
+import geolocation from "./geolocation";
 
 export default combineReducers({
     step: stepReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
     orderByCategory,
     menuCategoryMain,
     minicart,
-    checkout
+    checkout,
+    geolocation
 });
