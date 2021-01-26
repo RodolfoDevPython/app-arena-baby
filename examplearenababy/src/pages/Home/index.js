@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Text, View, Image, Dimensions, ImageBackground } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import OneSignal from "react-native-onesignal";
 
 
 import Header from "../../Components/Header";
@@ -33,6 +34,28 @@ import Slick from 'react-native-slick';
 const _image_header = require('../../assets/png/banner-main-home.png');
 
 export default function Home() {    
+
+    useEffect( () => {
+
+        OneSignal.setAppId('1f806aa2-6e22-47f1-9787-731539bd73b6');
+
+        // OneSignal.setNotificationOpenedHandler("opened", onOpened);
+
+        OneSignal.setNotificationOpenedHandler(openedEvent => {
+            console.log("OneSignal: notification opened:", openedEvent);
+          const { action, notification } = openedEvent;
+        });
+
+        /// vai executar quando o elemento for desmontado em tela ( ex: ir para outra pagina )
+        return () => OneSignal.clearHandlers();
+
+    }, []);
+
+    function onOpened(result) {
+
+        console.log("Mensagem: ", result.notification.payload.body);
+        console.log("Result: ", result);
+    }
 
     return (
         <View style={{ position: 'relative', flex: 1, justifyContent: 'center', alignItems: 'center', elevation: 6 }}> 

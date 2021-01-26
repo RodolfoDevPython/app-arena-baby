@@ -43,7 +43,11 @@ export default function InitStep3() {
         console.log("geo")
         console.log(userPosition)
         console.log(" ---------------= geo =---------------")
-        dispatch({ type: "GEOLOCATION", userPosition })
+
+        if (userPosition) {
+            dispatch({ type: "GEOLOCATION", userPosition })
+        }
+        
         
     }, [ userPosition ])
 
