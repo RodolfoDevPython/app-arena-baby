@@ -1,26 +1,29 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { View, Text, Image } from "react-native";
+import WebView from "react-native-webview";
 
 const logo = require('../../assets/png/logo-grande.png');
 
+import Header from "../../Components/MenuNavigation/Header";
+
 export default function Login() {
     
+    function inject() {
+
+    }
+
     return (
-        <View>
-            <Image source={logo} />
+        <View style={{ flex: 1 }}>
 
-            <TouchableOpacity>
-                <Text>CHAVE DE ACESSO RÁPIDO POR EMAIL</Text>
-            </TouchableOpacity>
+            <Header />    
+            
+            <WebView source={{ uri: "https://www.arenababy.com.br/account" }} 
+                // injectedJavaScript={inject}
+                // javaScriptEnabled={true}
+                // thirdPartyCookiesEnabled={true}
+            />
 
-            <TouchableOpacity>
-                <Text>ENTRAR COM EMAIL E SENHA</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity>
-                <Text>CONECTAR VIA FACEBOOK</Text>
-            </TouchableOpacity>
         </View>
     );
 }

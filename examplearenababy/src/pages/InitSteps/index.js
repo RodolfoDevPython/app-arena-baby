@@ -43,6 +43,14 @@ export default function InitStep({ navigation }) {
         navigation.navigate('Home');
     }
 
+    function handleRedirectHomeOrLogin() {
+
+        navigation.navigate("Login");
+
+        //navigation.navigate("Home");
+
+    }
+
     return(
         <>
             
@@ -53,7 +61,7 @@ export default function InitStep({ navigation }) {
                     {
                         step != 5 ?
                         <TouchableOpacity 
-                            onPress={ redirect }
+                            onPress={ handleRedirectHomeOrLogin }
                         >
                             <Text style={style.btn_pula}>Pular</Text>
                         </TouchableOpacity>
@@ -104,7 +112,7 @@ export default function InitStep({ navigation }) {
                                 : 
                                     <TouchableOpacity 
                                         style={{ marginLeft: 10 }}
-                                        onPress={() => navigation.navigate("Home") }
+                                        onPress={ handleRedirectHomeOrLogin }
                                         >
                                         <Text style={style.txt_btn_confirm}>OK</Text>
                                     </TouchableOpacity> 

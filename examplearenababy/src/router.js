@@ -8,6 +8,7 @@ import Tap from './Components/TabNavigator';
 import Init from "./pages/InitSteps";
 import Home from './pages/Home';
 import SearchEmpty from "./pages/SearchEmpty";
+import Login from "./pages/Login";
 
 import MiniCart from "./Components/MiniCart";
 
@@ -62,6 +63,12 @@ export default function Router() {
                     name="Checkout" 
                     options={{ headerShown: false }}
                     component={ Checkout }   
+                />
+
+                <Stack.Screen 
+                    name="Login" 
+                    options={{ headerShown: false }}
+                    component={ Login }   
                 />
 
             </Stack.Navigator>

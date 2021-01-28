@@ -236,6 +236,16 @@ export default function ResultCategory() {
         await fetchData(true);
         setRefreshing(false);
     }
+    
+    function GoToProduct(product) {
+
+        navigation.navigate('Product', {
+                product
+            }
+        )
+
+    }
+
 
     return (
 
@@ -268,7 +278,10 @@ export default function ResultCategory() {
                                     <View style={ style.item } >
 
                                         <View style={{ flexDirection: 'row', marginTop: 10, justifyContent: 'space-between' }} >
-                                            <TouchableOpacity style={{ marginRight: 10 }}>
+                                            
+                                            <TouchableOpacity 
+                                                style={{ marginRight: 10, elevation: 5 }}
+                                            >
 
                                                 <View style={ style.prime }>
                                                     <IconPrime /> 
@@ -277,7 +290,8 @@ export default function ResultCategory() {
 
                                             </TouchableOpacity>
 
-                                            <TouchableOpacity>
+                                            <TouchableOpacity
+                                            >
 
                                                 <View style={ style.desconto }>
                                                     <ArrowDiscount />
@@ -288,40 +302,47 @@ export default function ResultCategory() {
 
                                         </View>
 
-                                        <View style={ style.container_img }>
+                                        <TouchableOpacity
+                                            onPress={() => GoToProduct(item)}
+                                        >
 
-                                            <Image 
-                                                resizeMode="contain"
-                                                style={ style.img_product }
-                                                source={{ uri: imagem }} 
-                                                alt='Imagem de Música' 
-                                            />
+                                            <View style={ style.container_img }>
 
-                                            <View style={{ position: 'absolute', bottom: 0, flexDirection: 'row' }}>
+                                                <Image 
+                                                    resizeMode="contain"
+                                                    style={ style.img_product }
+                                                    source={{ uri: imagem }} 
+                                                    alt='Imagem de Música' 
+                                                />
 
-                                                <Text style={{ ...style.condicao, backgroundColor: item['Condição'] == 'Novo de Fábrica' ? '#00a0c6': '#E6007E' }}> { item['Condição'] } </Text>
+                                                <View style={{ position: 'absolute', bottom: 0, flexDirection: 'row' }}>
+
+                                                    <Text style={{ ...style.condicao, backgroundColor: item['Condição'] == 'Novo de Fábrica' ? '#00a0c6': '#E6007E' }}> { item['Condição'] } </Text>
+
+                                                </View>
 
                                             </View>
 
-                                        </View>
-
-                                        <View>
-                                            
-                                            <Text style={ style.brand } > { item['brand'] } </Text>
-
-                                            <Text style={ style.name } numberOfLines = { 2 } > { item['productName'] } </Text>
-
-                                            {  
-                                            ListPrice == Price 
-                                            ? (
-                                                <Text style={ style.oldPrice } > <Text style={{ ...style.price, fontSize: 11 }} >R$</Text>{ currency(ListPrice) } </Text>
-                                            )
-                                            : <></>
+                                            <View>
                                                 
-                                            }
-                                            <Text style={ style.price } > <Text style={{ ...style.price, fontSize: 15 }} >R$</Text>{ currency(Price) } </Text>
+                                                <Text style={ style.brand } > { item['brand'] } </Text>
 
-                                        </View>
+                                                <Text style={ style.name } numberOfLines = { 2 } > { item['productName'] } </Text>
+
+                                                {  
+                                                ListPrice == Price 
+                                                ? (
+                                                    <Text style={ style.oldPrice } > <Text style={{ ...style.price, fontSize: 11 }} >R$</Text>{ currency(ListPrice) } </Text>
+                                                )
+                                                : <></>
+                                                    
+                                                }
+                                                <Text style={ style.price } > <Text style={{ ...style.price, fontSize: 15 }} >R$</Text>{ currency(Price) } </Text>
+
+                                            </View>
+
+                                        </TouchableOpacity>
+                                        
 
                                         <TouchableOpacity 
                                             onPress={ () => handleAddMiniCart('') }
