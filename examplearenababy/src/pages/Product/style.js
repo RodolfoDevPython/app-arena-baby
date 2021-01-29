@@ -26,12 +26,13 @@ const styles = StyleSheet.create({
     },
 
     slickBannerMainItem: {
-        borderColor: '#C4C4C4',
         borderWidth: 1,
+        borderRadius: 8,
+        borderColor: '#C4C4C4',
+        padding: 10,
         marginLeft: 20,
         marginRight: 20,
-        height: 300,
-        borderRadius: 9,
+        height: 300        
     }
 
 });

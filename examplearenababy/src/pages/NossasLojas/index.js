@@ -141,6 +141,7 @@ export default function NossasLojas() {
             .then( resp => {                
 
                 if (resp.data) {
+                    //assinar novos atributos no array de objetos das lojas
                     Object.assign(e, 
                         { 
                             distanceText: resp.data.rows[0].elements[0].distance.text, 
@@ -172,16 +173,12 @@ export default function NossasLojas() {
             if( a.distanceValue < b.distanceValue ) {
 
                 return -1
-            } else {
-                return 1    
-            }
-
-            // if( a.distanceValue > b.distanceValue ) {
-
                 
-            // }
+            } else {
 
-            // return 0;
+                return 1    
+
+            }
 
         });
 

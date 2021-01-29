@@ -144,7 +144,10 @@ const styles = StyleSheet.create({
     },  
 
     section: {
-        marginBottom: 64
+        marginBottom: 64,
+        flex: 1,
+        justifyContent: 'center',
+        maxWidth: Dimensions.get('window').width,        
     }
 
 });

@@ -6,12 +6,12 @@ export default function Loading(props) {
 
     return (
         <ContentLoader 
-            speed={.7}
+            speed={.5}
             width={400}
             height={160}
             viewBox="0 0 400 160"
             backgroundColor="#f3f3f3"
-            foregroundColor="#ecebeb"
+            foregroundColor="#dbf099"
             {...props}
         >
             <Rect x="3" y="5" rx="3" ry="3" width="107" height="88" /> 

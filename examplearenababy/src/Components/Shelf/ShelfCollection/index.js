@@ -56,78 +56,79 @@ export default function Shelf({ colecao = 139 }) {
         <View style={ style.container } >
 
             { 
-                !items.length ? < Loading /> : (
+                <Loading />
+                // !items.length ? <Loading /> : (
 
-                <FlatList 
-                    data={ items }
-                    horizontal={ true }
-                    style={{ scrollbarColor: "#000" }}
-                    keyExtractor={ element => element.items[0].itemId }
-                    showsHorizontalScrollIndicator={false}
-                    renderItem={ ({ item }) => { 
+                // <FlatList 
+                //     data={ items }
+                //     horizontal={ true }
+                //     style={{ scrollbarColor: "#000" }}
+                //     keyExtractor={ element => element.items[0].itemId }
+                //     showsHorizontalScrollIndicator={false}
+                //     renderItem={ ({ item }) => { 
                             
-                            let { Price, ListPrice } = item.items[0].sellers[0].commertialOffer
+                //             let { Price, ListPrice } = item.items[0].sellers[0].commertialOffer
 
-                            let imagem = item.items[0].images[0].imageUrl;
+                //             let imagem = item.items[0].images[0].imageUrl;
 
-                            return (
-                                <>
-                                    <View style={ style.item } >
+                //             return (
+                //                 <>
+                //                     <View style={ style.item } >
 
-                                        <TouchableOpacity 
-                                            style={ style.container_img }
-                                            onPress={ () => GoToProduct(item) }    
-                                        >
+                //                         <TouchableOpacity 
+                //                             style={ style.container_img }
+                //                             onPress={ () => GoToProduct(item) }    
+                //                         >
 
-                                            <Image 
-                                                resizeMode="contain"
-                                                style={{  height: 300 }}
-                                                source={{ uri: imagem }} 
-                                                alt='Imagem de Música' 
-                                            />
+                //                             <Image 
+                //                                 resizeMode="contain"
+                //                                 style={{  height: 300 }}
+                //                                 source={{ uri: imagem }} 
+                //                                 alt='Imagem de Música' 
+                //                             />
 
-                                            <View style={{ position: 'absolute', bottom: 0, flexDirection: 'row' }}>
+                //                             <View style={{ position: 'absolute', bottom: 0, flexDirection: 'row' }}>
 
-                                                <View style={ style.desconto }>
-                                                    <Image 
-                                                        style={{ height: 15 }}
-                                                        source={ icon_desconto } 
-                                                        alt='Icone desconto' 
-                                                    />
-                                                </View>
+                //                                 <View style={ style.desconto }>
+                //                                     <Image 
+                //                                         style={{ height: 15 }}
+                //                                         source={ icon_desconto } 
+                //                                         alt='Icone desconto' 
+                //                                     />
+                //                                 </View>
 
-                                                <Text style={ style.condicao }> { item['Condição'] } </Text>
+                //                                 <Text style={ style.condicao }> { item['Condição'] } </Text>
 
-                                            </View>
+                //                             </View>
 
-                                        </TouchableOpacity>
+                //                         </TouchableOpacity>
 
-                                        <TouchableOpacity onPress={ () => GoToProduct(item) }   >
+                //                         <TouchableOpacity onPress={ () => GoToProduct(item) }   >
                                             
-                                            <Text style={ style.brand } > { item['brand'] } </Text>
+                //                             <Text style={ style.brand } > { item['brand'] } </Text>
 
-                                            <Text style={ style.name } numberOfLines = { 2 } > { item['productName'] } </Text>
+                //                             <Text style={ style.name } numberOfLines = { 2 } > { item['productName'] } </Text>
 
-                                            <Text style={ style.price } > <Text style={{ ...style.price, fontSize: 15 }} >R$</Text>{ currency(Price) } </Text>
+                //                             <Text style={ style.price } > <Text style={{ ...style.price, fontSize: 15 }} >R$</Text>{ currency(Price) } </Text>
 
-                                        </TouchableOpacity>
+                //                         </TouchableOpacity>
 
-                                        <TouchableOpacity 
-                                            onPress={ () => handleAddMiniCart('') }
-                                            style={ style.box_buy }    
-                                        >
-                                            <Text style={ style.text_buy } >ADICIONAR A SACOLA</Text>
-                                        </TouchableOpacity>
-                                    </View>
+                //                         <TouchableOpacity 
+                //                             onPress={ () => handleAddMiniCart('') }
+                //                             style={ style.box_buy }    
+                //                         >
+                //                             <Text style={ style.text_buy } >ADICIONAR A SACOLA</Text>
+                //                         </TouchableOpacity>
+                //                     </View>
 
-                                </>
-                            );
+                //                 </>
+                //             );
 
-                        } 
-                    }
-                />
+                //         } 
+                //     }
+                // />
 
-                )
+                // )
             }
 
         </View>

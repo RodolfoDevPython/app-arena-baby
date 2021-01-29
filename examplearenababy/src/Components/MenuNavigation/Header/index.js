@@ -21,15 +21,25 @@ export default function Drawer({ is_active = false, title = null }) {
 
     function onGoBack() {
 
-        if (route.name == 'Home') { 
-            console.log('essa é a home')
+        switch (route.name) {
 
-            navigation.dispatch(DrawerActions.toggleDrawer);
+            case "Home":
 
-        } else {
+                navigation.dispatch(DrawerActions.toggleDrawer);
+                
+                break;
 
-            navigation.goBack();
+            case "Login":
+            
+                navigation.navigate("Home")
 
+                break;
+    
+            default:
+
+                navigation.goBack();
+
+                break;
         }
         
     }

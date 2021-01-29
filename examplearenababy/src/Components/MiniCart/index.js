@@ -115,18 +115,13 @@ export default function Minicart({ navigation }) {
 
                         </View>
 
-                    <ScrollView style={style.menu} >                
+                    <ScrollView 
+                        style={style.menu} 
+                    >                
                         {
                             items.map( (e, i) => {
-                                console.log("aquiiiiiiiiiiiiiiii ->")
-                                console.log(e)
-                                // if(e.length > 0) {
 
                                     const image = e.product.items ? e.product.items[0].images[0].imageUrl : null;
-
-                                    console.log("image")
-                                    console.log(image)
-                                    console.log("===image==")
 
                                     return(
                                         // e.map( (product, i) => (
@@ -145,7 +140,7 @@ export default function Minicart({ navigation }) {
                                                 }
                                                 </View>
                                                 
-                                                <View style={{ marginLeft: 5 }} >
+                                                <View style={{ marginLeft: -30 }} >
 
                                                     <Text style={{ fontSize: 16, fontWeight: "700", lineHeight: 19 }} >
                                                     { 

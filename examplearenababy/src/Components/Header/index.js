@@ -13,6 +13,8 @@ const _icon_menu = require('../../assets/png/icon-menu-burger.png');
 const _icon_wishlist = require('../../assets/png/icon-wishlist.png');
 const _icon_minicart = require('../../assets/png/icon-minicart.png');
 
+import IconCloseWhite from "../../assets/svg/icon-close-white";
+
 
 import style from "./style";
 
@@ -45,7 +47,20 @@ export default function Header() {
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={ () => { openBoxSearch ? setOpenBoxSearch(false) : setOpenBoxSearch(true) }}>
-                            <Image source={_icon_search} />
+
+                            {
+                                openBoxSearch 
+                                ? 
+                                (
+                                    <IconCloseWhite />
+                                )
+                                : 
+                                (
+                                    <Image source={_icon_search} />
+                                )
+                            }
+                            
+
                         </TouchableOpacity>
 
                     </View>

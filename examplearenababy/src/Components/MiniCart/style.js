@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     item: {
         flexDirection: 'row',
         alignItems: 'flex-start', 
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         borderWidth: 1, 
         borderColor: '#DBDBDB', 
         borderRadius: 5 , 
@@ -21,6 +21,8 @@ const styles = StyleSheet.create({
         height: Dimensions.get("window").height - 370,
         maxHeight: Dimensions.get("window").height - 370,
         padding: 25,
+        paddingTop: 10,
+        paddingBottom: 10
     },
 
     qtd: {
