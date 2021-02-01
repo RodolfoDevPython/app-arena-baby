@@ -61,6 +61,10 @@ export default function Minicart({ navigation }) {
 
     }
 
+    function GoToHome() {
+        navigation.navigate("Home");
+    }
+
     return (
         <View style={{ backgroundColor: '#fff' }}>   
         
@@ -170,6 +174,7 @@ export default function Minicart({ navigation }) {
 
                             <TouchableOpacity 
                                 style={{ ...style.btn, borderColor: "#434343" }}  
+                                onPress={GoToHome}
                             >
 
                                 <Text style={{ color: "#434343" ,fontSize: 14, lineHeight: 16, fontWeight: '700' }} >CONTINUAR COMPRADO</Text>

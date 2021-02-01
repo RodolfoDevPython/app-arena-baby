@@ -102,22 +102,6 @@ export default function ResultCategory() {
 
     }
 
-    // useEffect( () => {
-
-    //     Clear();
-
-    //     if (category) {
-    //         search ? setBusca(`fq=C:${category.id}${search}`) : setBusca(`fq=C:${category.id}`);
-    //         // setBusca(`fq=C:${category.id}${search}`)
-    //         console.log("COMPONENTE DE RESULTADO")
-            
-    //         console.log(search)
-    //         console.log("----------------= COMPONENTE DE RESULTADO =------------")
-    //     }
-        
-    //     // const busca = ;
-    // }, [ category ])
-
     useEffect( () => {
 
         Clear();
@@ -143,19 +127,11 @@ export default function ResultCategory() {
 
     useEffect( () => {
 
-        // if (orderBy.script || filters && orderBy.script || filters == '' ){
-        //     console.log("aquiiiii no if")
-
         Clear();
 
         if (filters) {
             fetchData(true);        
         }        
-        // }
-        // } else {
-        //     console.log("aquiiiii no else")
-        //     fetchData();        
-        // }
         
         Clear();
 
@@ -222,8 +198,6 @@ export default function ResultCategory() {
             setRangeResult({ from: rangeResult.from + 10, to: rangeResult.to + 10  });
             await fetchData();
         }
-        
-        
         
     }
 

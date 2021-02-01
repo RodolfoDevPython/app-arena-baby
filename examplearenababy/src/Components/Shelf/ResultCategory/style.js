@@ -14,21 +14,23 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         elevation: 7,
         justifyContent: 'flex-start',
-        alignItems: 'baseline',
-        paddingRight: 10,
-        paddingLeft: 10,
+        alignItems: 'center',
+        // alignItems: 'baseline',
+        // paddingRight: 10,
+        // paddingLeft: 10,
         paddingBottom: 100,
         height: Dimensions.get("screen").height
     },
 
     listResult: {
         paddingTop: 30,
-        marginBottom: 50
+        marginBottom: 50,
     },
 
     item: {
         position: 'relative',
-        marginRight: 10,
+        marginLeft: 5,
+        marginRight: 5,    
         padding: 10,
         paddingTop: 0,
         marginBottom: 20,

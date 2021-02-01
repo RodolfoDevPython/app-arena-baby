@@ -15,28 +15,28 @@ export default function Loading(props) {
             {...props}
         >
 
-            <Rect x="3" y="5" rx="3" ry="3" width="107" height="88" /> 
-            <Rect x="5" y="109" rx="0" ry="0" width="103" height="10" /> 
-            <Rect x="6" y="125" rx="0" ry="0" width="101" height="11" /> 
-            <Rect x="6" y="140" rx="0" ry="0" width="103" height="20" />
+            <Rect x="80" y="5" rx="3" ry="3" width="107" height="88" /> 
+            <Rect x="80" y="109" rx="0" ry="0" width="103" height="10" /> 
+            <Rect x="80" y="125" rx="0" ry="0" width="101" height="11" /> 
+            <Rect x="80" y="140" rx="0" ry="0" width="103" height="20" />
 
 
-            <Rect x="126" y="5" rx="3" ry="3" width="107" height="88" /> 
-            <Rect x="127" y="109" rx="0" ry="0" width="103" height="10" /> 
-            <Rect x="126" y="125" rx="0" ry="0" width="101" height="11" /> 
-            <Rect x="126" y="140" rx="0" ry="0" width="103" height="20" />
+            <Rect x="216" y="5" rx="3" ry="3" width="107" height="88" /> 
+            <Rect x="216" y="109" rx="0" ry="0" width="103" height="10" /> 
+            <Rect x="216" y="125" rx="0" ry="0" width="101" height="11" /> 
+            <Rect x="216" y="140" rx="0" ry="0" width="103" height="20" />
 
 
-            <Rect x="3" y="185" rx="3" ry="3" width="107" height="88" /> 
-            <Rect x="5" y="259" rx="0" ry="0" width="103" height="10" /> 
-            <Rect x="6" y="205" rx="0" ry="0" width="101" height="11" /> 
-            <Rect x="6" y="280" rx="0" ry="0" width="103" height="20" />
+            <Rect x="80" y="185" rx="3" ry="3" width="107" height="88" /> 
+            <Rect x="80" y="259" rx="0" ry="0" width="103" height="10" /> 
+            <Rect x="80" y="205" rx="0" ry="0" width="101" height="11" /> 
+            <Rect x="80" y="280" rx="0" ry="0" width="103" height="20" />
 
 
-            <Rect x="126" y="185" rx="3" ry="3" width="107" height="88" /> 
-            <Rect x="127" y="259" rx="0" ry="0" width="103" height="10" /> 
-            <Rect x="126" y="205" rx="0" ry="0" width="101" height="11" /> 
-            <Rect x="126" y="280" rx="0" ry="0" width="103" height="20" />
+            <Rect x="216" y="185" rx="3" ry="3" width="107" height="88" /> 
+            <Rect x="216" y="259" rx="0" ry="0" width="103" height="10" /> 
+            <Rect x="216" y="205" rx="0" ry="0" width="101" height="11" /> 
+            <Rect x="216" y="280" rx="0" ry="0" width="103" height="20" />
 
         </ContentLoader>
     )

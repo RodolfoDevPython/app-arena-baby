@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 
     menu: {
         height: Dimensions.get("window").height - 370,
-        maxHeight: Dimensions.get("window").height - 370,
+        maxHeight: Dimensions.get("window").height - 390,
         padding: 25,
         paddingTop: 10,
         paddingBottom: 10
